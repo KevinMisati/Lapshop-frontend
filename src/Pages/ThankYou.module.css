@@ -1,0 +1,19 @@
+.thankyou-container{
+    background: url("https://images.pexels.com/photos/4439466/pexels-photo-4439466.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") center/cover no-repeat fixed; 
+}
+.thankyou{
+    background-color: #000;
+    opacity:.7;
+    height: 100%;
+    min-height:calc(100vh - 70px);
+    color: #fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.thankyou h2{
+    max-width: 700px;
+    text-align: center;
+    padding: 5rem auto;
+    margin: 5rem 0;
+}

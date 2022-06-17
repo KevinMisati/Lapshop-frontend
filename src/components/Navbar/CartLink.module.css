@@ -1,0 +1,28 @@
+.cart-container{
+    position: relative;
+    cursor: pointer;
+}
+.cart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-link{
+    color: inherit;
+    text-decoration: none;
+}
+.nav-link i{
+    font-size: 1.5rem;
+}
+.quantity{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--red-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translateY(-7px) translateX(7px);
+}

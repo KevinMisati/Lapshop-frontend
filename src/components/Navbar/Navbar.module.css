@@ -1,0 +1,20 @@
+.navbar-container{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 101;
+    background-color: var(--gray-color);
+    
+}
+.small-screen{
+    display: none;
+}
+
+@media screen and (max-width:600px){
+    .large-screen{
+        display: none;
+    }
+    .small-screen{
+    display: block;
+}
+}

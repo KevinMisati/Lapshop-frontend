@@ -1,0 +1,18 @@
+.button {
+    text-transform: capitalize;
+    background: transparent;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 14px;
+    padding: .5rem 1.5rem;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    transition: .5s all;
+    border-color: #717171;
+}
+.button:hover{
+    background-color: #3C43A4 !important;
+    color: white !important;
+}

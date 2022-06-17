@@ -1,0 +1,12 @@
+.title_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+.title_container h3{
+    text-transform: capitalize;
+    font-size:2rem;
+    color: #212121;
+    font-family: 'Glegoo', serif;
+}

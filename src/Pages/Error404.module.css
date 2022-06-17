@@ -1,0 +1,46 @@
+.error-container{
+    width:100%;
+    height:calc(100vh - 70px);
+}
+.error{
+    width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.45rem;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)) ,url("../images/404.png") center/cover no-repeat;
+}
+/* https://image.freepik.com/free-vector/error-404-concept-landing-page_23-2148246764.jpg?w=740 */
+.home-link{
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border: 1px solid #000;
+    margin-top: 1rem;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: .5rem 1.5rem;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    transition: .5s all;
+    border-color: #717171;
+    color: white;
+    font-size: 1.15rem;
+    transition: var(--transition);
+    background-color: var(--blue-color);
+}
+@media screen and (max-width:567px){
+    .error{
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    .home-link{
+        font-size: 1.1rem;
+    }
+}

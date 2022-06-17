@@ -1,0 +1,178 @@
+.checkout-container{
+    background: var(--gray-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 65px);
+}
+.checkout{
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2rem;
+}
+.checkout form {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    justify-content:center ;
+    margin:1rem 0;
+    padding: 1.5rem 2rem;
+}
+.checkout h2,
+.checkout h4{
+    text-align: center;
+}
+.checkout h2{
+    text-transform: capitalize;
+}
+.input-control{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+font-family: Roboto,Helvetica,Arial,sans-serif;
+color: #555;
+line-height: 1.5;
+font-size: 14px;
+float: left;
+padding-left: 20px;
+width: 100%;
+margin: .5rem 0;
+}
+.checkout label{
+line-height: 1.5;
+box-sizing: border-box;
+font-family: Roboto,Helvetica,Arial,sans-serif;
+font-size: 12px;
+display: inline-block;
+max-width: 100%;
+color: gray;
+margin-bottom: 6px!important;
+}
+.checkout input,
+.checkout textarea {
+font-family: Roboto,Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.42857;
+background: #fff;
+color: #000;
+border: 1px solid #ccc;
+padding: 7px 10px;
+width: 100%!important;
+}
+.pick-up,
+.transport{
+    display: flex;
+    width: auto !important;
+    align-items: center;
+    vertical-align: middle;
+    font-size: 1.5rem !important;
+    position: relative;
+}
+.input-control-delivery input{
+    width: 25px !important;
+    height: 25px !important;
+    font-size: 1.5rem !important;
+    opacity: .8;
+    cursor: pointer;
+}
+
+.input-control-delivery label{
+    margin: .5rem;
+    font-size: 1.2rem !important;
+}
+.input-control-delivery i{
+    margin-right: .35rem;
+}
+
+.country-code{
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 1.42857;
+background: #fff;
+color: #000;
+border: 1px solid #ccc;
+padding: 10px ;
+height: auto!important;
+}
+.checkout button {
+    -webkit-tap-highlight-color: transparent;
+direction: ltr;
+box-sizing: border-box;
+font: inherit;
+margin: 0;
+overflow: visible;
+width: 100%!important;
+height: auto!important;
+text-transform: uppercase;
+background: var(--blue-color);
+border: 1px solid var(--blue-color);
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font-family: Roboto,Helvetica,Arial,sans-serif;
+font-style: normal;
+line-height: 1.42857;
+position: relative;
+vertical-align: middle;
+text-decoration: none;
+text-align: center;
+font-size: 14px;
+font-weight: 500;
+padding: 10px;
+}
+.names {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.names>div {
+    flex: .475;
+    
+}
+.mobile {
+    width: 100%;
+    display: flex;
+}
+.mobile input{
+    flex: 1;
+    margin-left: .5rem;
+}
+.address-details-container {
+    display: none;
+    transition: .5s all;
+}
+.payment-instructions h4{
+    text-align: left;
+}
+.pickup-stores .input-control{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: auto !important;
+}
+.pickup-stores-container{
+    display: none;
+}
+.pickup-stores input{
+    width: auto !important;
+    width: 25px !important;
+    height: 25px !important;
+    margin-right: .5rem;
+    align-items: center;
+}
+@media screen and (max-width:600px) {
+    .checkout{
+        padding: 0 .5rem;
+    }
+    .names{
+        flex-direction: column;
+    }
+    .checkout form {
+        width: 100%;
+        margin: 0;
+    }
+}

@@ -1,0 +1,21 @@
+.products-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-color);
+    padding: 2rem 0;
+}
+.products{
+    width: 100%;
+    max-width: 1144px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+}
+@media screen and (max-width:500px){
+    .products{
+        justify-content: center;
+    }
+}
