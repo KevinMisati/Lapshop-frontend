@@ -1,6 +1,5 @@
 import React,{useState} from 'react'
 import classes from "./SignUp.module.css"
-import axiosInstance from "../../axiosApi"
 import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
@@ -14,22 +13,7 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (email !== "" && password !== "" && firstname !=="" && lastname !== "" && email.includes("@")){
-            axiosInstance.post('user/create/',{
-            email:email,
-            first_name:firstname,
-            last_name:lastname,
-            password:password
-        })
-        .then(resp =>  {
-            //console.log(resp)
-            if (resp.status === 201 && resp.statusText === "Created"){
-                alert("You have successfully created an account.")
-                history.push("/")
-            }
-        })
-        .catch(error => {
-            throw error
-        })
+            
         }
         else{
             setErrMessage("Please fill in the form correctly, all fields are required.")

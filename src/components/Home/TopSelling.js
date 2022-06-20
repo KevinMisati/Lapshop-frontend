@@ -2,19 +2,31 @@ import React,{useEffect,useState} from 'react'
 import classes from "./TopSelling.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
-//import {products} from "../Store/data"
-import axiosInstance from '../../axiosApi'
-
+import {products} from "../Store/data"
+import sanityClient from "../../sanityClient"
 
 const TopSelling = () => {
-    const [topSelling,setTopSelling] = useState([])
+    const [topSelling,setTopSelling] = useState([...products])
     useEffect(resp => {
-        axiosInstance.get('products/')
-        .then (resp => {
-            const topSelling = resp.data.filter(product => product.top_selling === true)
-            setTopSelling(topSelling)
-        })
-    },[])
+        sanityClient
+			.fetch(
+				`*[_type == 'product' && topSelling == true]{                                           
+                _id,
+                _type,
+                title,
+                img,
+                newPrice,
+                oldPrice,
+                topSelling
+            }
+        `
+			)
+			.then((data) => {
+                console.log(data)
+                setTopSelling(data)
+            })
+			.catch(console.error);
+    },[]) 
 
     return (
         <div className={classes["top-selling_container"]}>

@@ -6,7 +6,6 @@ import { CartContext } from '../../Context'
 
 const SingleProduct = ({ id, img, title, price,info,quantity}) => {
 
-    //console.log("single",quantity)
     const {
         increase_sub_total,
         decrease_sub_total,

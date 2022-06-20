@@ -4,7 +4,7 @@ import {Outlet } from 'react-router-dom'
 const Account = () => {
     return (
         <div className={classes["account-container"]}>
-         <Outlet />
+            <Outlet />
         </div>
     )
 }

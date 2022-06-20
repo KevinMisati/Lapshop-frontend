@@ -1,35 +1,45 @@
 import React,{useState,useEffect} from 'react'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
-import axiosInstance from '../axiosApi'
+import sanityClient from "../sanityClient"
 
 
 const Store = () => {
     const [products,setProducts] = useState([])
     const [filteredProducts,setFilteredProducts] = useState([])
 
-    useEffect(() => {
-        axiosInstance.get("products/")
-        .then(response => {
-            setProducts(response.data)
-            setFilteredProducts(response.data.filter(product => product.category === "laptops"))
-        })
-        
-        .catch(error => {
-            throw error
-        })
-    },[])
+    useEffect(resp => {
+        sanityClient
+            .fetch(
+                `*[_type == 'product']{                                           
+                _id,
+                _type,
+                title,
+                img,
+                newPrice,
+                oldPrice,
+                category
+            }
+        `
+            )
+            .then((data) => {
+                console.log(data)
+                setProducts(data)
+            })
+            .catch(console.error);
+    }, []) 
+
 
     const handleLaptopFiltration = () => {
-        let filtered = products.filter(product => product.category === "laptops")
-        setFilteredProducts(filtered)
+         setFilteredProducts(products)
     }
+    
     const handlePhoneFiltration = () => {
-        let filtered = products.filter(product => product.category === "phones")
+        let filtered = products.filter(product => product.category === "Dell")
         setFilteredProducts(filtered)
     }
     const handleAccessoryFiltration = () => {
-        let filtered = products.filter(product => product.category === "accessories")
+        let filtered = products.filter(product => product.category === "Mac")
         setFilteredProducts(filtered)
     }
     return (
@@ -39,17 +49,17 @@ const Store = () => {
                 <ul className={classes["price-filter"]}>
                     <li>
                         <button autoFocus onClick={handleLaptopFiltration}>
-                            laptops
+                            All
                         </button>
                     </li>
                     <li>
                         <button onClick={handlePhoneFiltration}>
-                            phones
+                            Dell
                         </button>
                     </li>
                     <li>
                         <button onClick={handleAccessoryFiltration}>
-                            accessories
+                            Mac
                         </button>
                     </li>
                 </ul>
