@@ -23,7 +23,7 @@ const Store = () => {
         `
             )
             .then((data) => {
-                console.log(data)
+                setFilteredProducts(data)
                 setProducts(data)
             })
             .catch(console.error);

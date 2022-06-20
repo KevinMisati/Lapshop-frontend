@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState} from 'react'
 import classes from "./SingleProduct.module.css"
 import Button from './Button'
 import { Link} from 'react-router-dom'
@@ -51,7 +51,7 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                         <p className={classes["old-price"]}>{oldPrice}</p>
                         <p className={classes["new-price"]}>{newPrice}</p>
                     </div>
-                            <div onClick={() => handleItemIncrement(id)} className={classes["add-to-cart"]}>
+                    <div onClick={() => handleItemIncrement(id)} className={classes["add-to-cart"]}>
                                 <Button  text="add to cart" />
                     </div>
                 </div>

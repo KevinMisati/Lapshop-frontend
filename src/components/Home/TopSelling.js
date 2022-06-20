@@ -2,11 +2,10 @@ import React,{useEffect,useState} from 'react'
 import classes from "./TopSelling.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
-import {products} from "../Store/data"
 import sanityClient from "../../sanityClient"
 
 const TopSelling = () => {
-    const [topSelling,setTopSelling] = useState([...products])
+    const [topSelling,setTopSelling] = useState([])
     useEffect(resp => {
         sanityClient
 			.fetch(
@@ -39,12 +38,12 @@ const TopSelling = () => {
                     return (
                         
                         <SingleProduct 
-                            key={product.id}
+                            key={product._id}
                             name={product.title}
                             img={product.img}
                             newPrice={product.newPrice}
                             oldPrice={product.oldPrice}
-                            id={product.id}
+                            id={product._id}
                         /> 
                     )
                 })}

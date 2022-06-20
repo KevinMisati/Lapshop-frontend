@@ -4,6 +4,7 @@
     align-items: center;
     background-color: var(--gray-color);
     padding: 2rem 0;
+    min-height:calc(100vh - 110px);
 }
 .products{
     width: 100%;
@@ -11,8 +12,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    justify-content: space-between;
     padding: 2rem 0;
+}
+.products>div{
+    margin: .5rem;
 }
 @media screen and (max-width:500px){
     .products{

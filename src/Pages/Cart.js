@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import classes from "./Cart.module.css"
 import SingleProduct from '../components/Cart/SingleProduct'
 import CheckOutButton from '../components/Cart/CheckOut'
@@ -8,6 +8,9 @@ import Button from '../components/Utilities/Button'
 
 const Cart = () => {
     const { products_in_cart,number_of_items} = useContext(CartContext)
+    useEffect(() => {
+        console.log(products_in_cart)
+    },[])
     return (
         <div className={classes["cart-container"]}>
             
@@ -30,14 +33,14 @@ const Cart = () => {
                 <div>
                 <div className={classes["products"]}>
                 {
-                    products_in_cart.map (({id,img,title,new_price,quantity}) => {
+                    products_in_cart.map (({_id,img,title,new_price,quantity}) => {
                         return (
                             <SingleProduct
-                                    key={id}
+                                    key={_id}
                                     img={img}
                                     title={title}
                                     price={new_price}
-                                    id={id}
+                                    id={_id}
                                     quantity={quantity}
                             />
                         )

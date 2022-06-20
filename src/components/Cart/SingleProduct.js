@@ -4,7 +4,7 @@ import { CartContext } from '../../Context'
 
 
 
-const SingleProduct = ({ id, img, title, price,info,quantity}) => {
+const SingleProduct = ({ id, img, title, price,quantity}) => {
 
     const {
         increase_sub_total,
@@ -16,10 +16,10 @@ const SingleProduct = ({ id, img, title, price,info,quantity}) => {
     
     let localCartState = localStorage.getItem('cartState')
     localCartState = JSON.parse(localCartState)
-    let product = localCartState.products_in_cart.filter(prod => prod.id === id)
+    let product = localCartState.products_in_cart.filter(prod => prod._id === id)
     product = product[0]
     const defaultQuantity = product.quantity
-    const defaultPrice = product.quantity * price
+    const defaultPrice = product.quantity * price 
 
     const [quantityOfSpecificItem, setQuantityOfSpecificItem] = useState(defaultQuantity)
     const [totalPriceOfSpecificItem, settotalPriceOfSpecificItem] = useState(Number(defaultPrice))
@@ -35,23 +35,23 @@ const SingleProduct = ({ id, img, title, price,info,quantity}) => {
     }
     useEffect(() => {
         increase_quantity(quantityOfSpecificItem,id)
-    },[quantityOfSpecificItem,id])
+    },[quantityOfSpecificItem,id]) 
     
 
 
-    const handleItemdecrement = (id,price,quantity) => {
+  const handleItemdecrement = (id,price,quantity) => {
         if (quantityOfSpecificItem > 1){
             decrease_sub_total(price)
             settotalPriceOfSpecificItem(prevPrice => prevPrice - Number(price))
             setQuantityOfSpecificItem(prev => prev - 1)
         }
-        else if (quantityOfSpecificItem === 1){
+        else if(quantityOfSpecificItem === 1){
             remove_product_from_cart(id,price,1)
         }
     }
     const handleProductRemoval = (id,price,quantity) => {
         remove_product_from_cart(id,price,quantity)
-    }
+    } 
     return (
         <div className={classes["single-product-container"]}>
             <div className={classes["single-product"]}>
@@ -61,7 +61,7 @@ const SingleProduct = ({ id, img, title, price,info,quantity}) => {
                 <div className={classes["product-info-container"]}>
                 <div className={classes["product-info"]}>
                     <h3>{title}</h3>
-                    <p>{info}</p>
+                    {/* <p>{info}</p> */}
                 </div>
                 <div className={classes["change-amount"]}>
 
@@ -79,7 +79,7 @@ const SingleProduct = ({ id, img, title, price,info,quantity}) => {
                     <button onClick={() => handleProductRemoval(id,price,quantityOfSpecificItem)}>Remove</button>
                 </div>
                 </div>
-            </div>
+            </div> 
         </div>
     )
 }

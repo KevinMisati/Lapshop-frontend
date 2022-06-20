@@ -1,9 +1,9 @@
 import React,{useState,useEffect,useContext} from 'react'
 import classes from "./ProductInfo.module.css"
 import {useParams} from "react-router-dom"
-import axiosInstance from '../axiosApi'
 import AddToCartButton from '../components/Utilities/AddToCartButton'
 import { CartContext } from '../Context'
+import sanityClient from "../sanityClient"
 
 const ProductInfo = () => {
     const [product,setProduct] = useState({})
@@ -14,15 +14,27 @@ const ProductInfo = () => {
         add_to_cart(id)
     }
 
-    useEffect(() => {
-        axiosInstance.get(`products/${id}`)
-        .then(resp => {
-            setProduct(resp.data)
-        })
-        .catch(error => {
-            throw error
-        })
-    },[id])
+    useEffect(resp => {
+        sanityClient
+            .fetch(
+                `*[_type == 'product' && _id == "${id}" ]{   
+                title,
+                img,
+                info
+            }
+        `
+            )
+            .then((data) => {
+                const text = data[0].info[0].children[0].text
+                setProduct({
+                    title:data[0].title,
+                    img:data[0].img,
+                    info:text
+
+                })
+            })
+            .catch(console.error);
+    }, [id]) 
 
     
     

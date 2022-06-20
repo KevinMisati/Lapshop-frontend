@@ -1,5 +1,5 @@
 import React,{createContext,useState,useEffect} from 'react'
-import axiosInstance from './axiosApi'
+import sanityClient from "./sanityClient"
 
 
 const CartContext = createContext()
@@ -17,56 +17,71 @@ const CartProvider = ({children}) => {
     const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
 
     useEffect(()=> {
+
         localStorage.setItem('cartState',JSON.stringify(cartState))
     },[cartState])
 
     const add_to_cart = (id) => {
-
         if (cartState.products_in_cart < 1 ) {
-            axiosInstance.get(`products/${id}`) 
-        
+            sanityClient
+                .fetch(
+                    `*[_type == 'product' && _id == "${id}" ]{   
+                title,
+                img,
+                new_price,
+                _id
+            }`)
                 .then(resp => {
-                    setCartState({...cartState,
-                    number_of_items:cartState.number_of_items + 1,
-                    products_in_cart:[{...resp.data,quantity:1
+                   setCartState(
+                        {
+            ...cartState,
+             number_of_items:cartState.number_of_items + 1,
+
+            products_in_cart:[{...resp[0],quantity:1
                     },...cartState.products_in_cart],
-                    sub_total:cartState.sub_total + Number(resp.data.new_price)
-                })
+
+                    sub_total:cartState.sub_total + Number(resp[0].new_price)
+                }) 
                 
                 }) 
                 .catch(error => {
                     throw error
                 })
         }
-        else  {
-            const is_product_in_cart = cartState.products_in_cart.filter(product => product.id === id)
-            if(is_product_in_cart.length > 0){
-                
-            }
-            else{
-                
-                axiosInstance.get(`products/${id}`) 
-        
-                .then(resp => {
-                    setCartState({...cartState,
-                    number_of_items:cartState.number_of_items + 1,
-                    products_in_cart:[{...resp.data,quantity:1},...cartState.products_in_cart],
-                    sub_total:cartState.sub_total + Number(resp.data.new_price)
-                })
-                
-                }) 
-                .catch(error => {
-                    throw error
-                })
-            }
-    
-                }
+        else {
+            const is_product_in_cart = cartState.products_in_cart.filter(product => product._id === id)
+            console.log(id)
+            console.log(is_product_in_cart.length)
+            if (is_product_in_cart.length < 1 ) {
+                sanityClient
+                    .fetch(
+                        `*[_type == 'product' && _id == "${id}" ]{   
+                            title,
+                            img,
+                            _id,
+                            new_price
+                        }`)
 
+                    .then(resp => {
+                        console.log(resp._id)
+                        setCartState({
+                            ...cartState,
+                            number_of_items: cartState.number_of_items + 1,
+                            products_in_cart: [{ ...resp[0], quantity: 1 }, ...cartState.products_in_cart],
+                            sub_total: cartState.sub_total + Number(resp[0].new_price)
+                        })
+
+                    })
+                    .catch(error => {
+                        throw error
+                    })
+            }
+            }
     } 
     const increase_quantity = (quantity,id) => {
         let products = cartState.products_in_cart 
-        let product = products.filter(prod => prod.id === id)
-        const index = products.findIndex(prod => prod.id === id)
+        let product = products.filter(prod => prod._id === id)
+        const index = products.findIndex(prod => prod._id === id)
         product = {
             ...products[index],
             quantity:quantity
@@ -93,10 +108,9 @@ const CartProvider = ({children}) => {
     }
 
     const remove_product_from_cart = (id,price,quantity) => {
-        console.log(price * quantity)
         setCartState({
             ...cartState,
-            products_in_cart:cartState.products_in_cart.filter(product => product.id !== id),
+            products_in_cart:cartState.products_in_cart.filter(product => product._id !== id),
             sub_total:cartState.sub_total - (price * quantity),
             number_of_items:cartState.number_of_items - 1
         })

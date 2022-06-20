@@ -15,8 +15,8 @@ const Products = ({products}) => {
                             name={product.title}
                             newPrice={product.new_price}
                             oldPrice={product.old_price}
-                            key={product.id}
-                            id={product.id}
+                            key={product._id}
+                            id={product._id}
                         />
                     )
                 })
