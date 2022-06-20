@@ -1,19 +1,19 @@
-:root{
-    --blue-color:#3C43A4;
-    --gray-color:#f3f3f3;
-    --red-color:#ff5063;
-    --transition:.5s all;
+/* :root{
     
-}
+    
+} */
 .content{
     align-items:stretch !important;
     justify-content: stretch !important;
     width:100vw;
     height: 100vh;
-    background-color: var(--gray-color);
+    background-color: var(--clr-body);
 }
 h1,
 h2,
 h3{
     font-family: 'Glegoo', serif;
+}
+.app{
+    background-color: var(--clr-body);
 }

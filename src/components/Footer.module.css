@@ -2,7 +2,7 @@
     position:relative;
     z-index: 99;
     color: #fff;
-    background: #000;
+    background: var(--clr-dark);
     display:flex;
     align-items: center;
     width: 100%;

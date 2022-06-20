@@ -2,36 +2,59 @@
     width: 100%;
     z-index: -1;
     height: calc(100vh - 80px);
-    /* max-width:1148px; */
-    max-width:1350px;
     margin: auto;
-    background: url("../../images/29118.jpg") fixed center/cover no-repeat; 
+    background:linear-gradient(
+        90deg,
+        rgba(222, 214, 209,1),
+        rgba(222, 214, 209,.8),
+        rgba(222, 214, 209,.6),
+        rgba(222, 214, 209,.4),
+        rgba(222, 214, 209,.2)
+        ) ,
+        url("https://img.freepik.com/free-photo/box-market-electronic-ordering-shop-basket_1421-567.jpg?size=626&ext=jpg&ga=GA1.2.348767858.1655273418") fixed center/cover no-repeat;  
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .banner {
     width: calc(100% - 2rem);
+    max-width: 1148px;
+    margin: auto;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 .banner-info{
-    background: rgba(0,0,0,.8);
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
     padding:2rem;
 }
-.banner h2 {
+.banner h1 {
     text-transform: capitalize;
-    padding: 2rem;
-    margin: 1rem;
     width:auto;
     color: white;
+    color: var(--clr-dark);
     border-radius: 4px;
-    text-align: center;
+    font-size: 3rem;
+    max-width: 550px;
+    margin-bottom: 2rem;
+}
+.action-button button{
+    padding: .5rem 1rem;
+    font-size: 1.35rem;
+    cursor: pointer;
+    background: var(--clr-btn1);
+    color: var(--clr-light);
+    border-radius: 4px;
+    border:var(--clr-btn1);
+}
+.action-button button:hover{
+    background: var(--clr-btn2);
+}
+@media screen and (max-width:767px){
+    .banner h1 {
+    font-size: 2rem;
+}
+.action-button button{
+    font-size: 1.15rem;
+}
 }

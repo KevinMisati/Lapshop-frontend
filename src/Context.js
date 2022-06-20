@@ -50,8 +50,7 @@ const CartProvider = ({children}) => {
         }
         else {
             const is_product_in_cart = cartState.products_in_cart.filter(product => product._id === id)
-            console.log(id)
-            console.log(is_product_in_cart.length)
+            
             if (is_product_in_cart.length < 1 ) {
                 sanityClient
                     .fetch(
@@ -63,7 +62,6 @@ const CartProvider = ({children}) => {
                         }`)
 
                     .then(resp => {
-                        console.log(resp._id)
                         setCartState({
                             ...cartState,
                             number_of_items: cartState.number_of_items + 1,

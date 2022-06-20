@@ -47,12 +47,9 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                             
                         </h5>
                     </div>
-                    <div className={classes["product-price"]}>
-                        <p className={classes["old-price"]}>{oldPrice}</p>
-                        <p className={classes["new-price"]}>{newPrice}</p>
-                    </div>
+                    
                     <div onClick={() => handleItemIncrement(id)} className={classes["add-to-cart"]}>
-                                <Button  text="add to cart" />
+                        <Button  text="add to cart" />
                     </div>
                 </div>
                 </div>

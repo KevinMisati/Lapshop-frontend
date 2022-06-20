@@ -31,7 +31,7 @@ const TopSelling = () => {
         <div className={classes["top-selling_container"]}>
         <div className={classes["top-selling"]}>
             <header className={classes["top-selling_header"]}>
-                <Title title="new products"  />
+                <Title title="Latest products"  />
             </header>
             <main className={classes.products}>
                 {topSelling.map(product => {

@@ -1,3 +1,21 @@
+:root{
+    
+    --clr-body:#fb8500;
+    --clr-body:#f3f3f3;
+    --clr-body:rgb(222, 214, 209);
+    --clr-body:#ded6d1;
+    
+    --clr-light:#fff;
+    --clr-accent:#023047;
+    --clr-dark:#0d1b2a;
+
+    --clr-btn1:#3C43A4;
+    --clr-btn2:#3c43a4e3;
+
+    --blue-color:#3C43A4;
+    --red-color:#ff5063;
+    --transition:.5s all;
+}
 body,
 *{
     margin:0;
@@ -11,4 +29,9 @@ body,
     width:auto !important;
     height: auto !important;
     background-color: var(--gray-color);
+}
+h2,
+h3,
+h1{
+    color:var(--clr-dark);
 }
