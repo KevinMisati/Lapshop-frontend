@@ -76,11 +76,11 @@ const Store = () => {
             
                 <Products products={filteredProducts} />
             </div>
-            <div className={classes.scroll}>
+            {/* <div className={classes.scroll}>
                 <button onClick={handleScrollToTop}>
                     <i class="fas fa-arrow-up"></i>
                 </button>
-            </div>
+            </div> */}
             
         </div>
     )
