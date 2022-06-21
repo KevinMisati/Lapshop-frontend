@@ -39,3 +39,14 @@
     background-color: var(--blue-color);
     color: #fff;
 }
+.scroll{
+    position: fixed;
+    bottom: 5.5%;
+    right: 7.5%;
+}
+.scroll button{
+    padding: .5rem 1rem;
+    background: var(--clr-btn1);
+    border: var(--clr-btn1);
+    cursor: pointer;
+}

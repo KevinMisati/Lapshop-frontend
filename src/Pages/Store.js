@@ -2,11 +2,19 @@ import React,{useState,useEffect} from 'react'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
 import sanityClient from "../sanityClient"
+import ScrollToTop from '../components/Utilities/ScrollToTop'
 
 
 const Store = () => {
     const [products,setProducts] = useState([])
     const [filteredProducts,setFilteredProducts] = useState([])
+    const handleScrollToTop = (e) => {
+        e.preventDefault()
+        window.scroll({
+            top:0,
+            behavior:"smooth"
+        })
+    }
 
     useEffect(resp => {
         sanityClient
@@ -67,6 +75,11 @@ const Store = () => {
             <div className={classes.products}>
             
                 <Products products={filteredProducts} />
+            </div>
+            <div className={classes.scroll}>
+                <button onClick={handleScrollToTop}>
+                    <i class="fas fa-arrow-up"></i>
+                </button>
             </div>
             
         </div>
