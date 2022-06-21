@@ -4,11 +4,6 @@ import SingleProduct from "./SingleProduct"
 
 const ChosenForU = () => {
 
-   /*  const CalcDiscount = ((newP , oldP) => {
-        const discount = (newP - oldP) / oldP
-        return(Math.round(discount))
-    }) */
-
     const data = [
         {
             name: "Samsung Galaxy A12, 6.5, 4GB RAM + 128GB(Dual SIM), 5000mAh - Blue",

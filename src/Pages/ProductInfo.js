@@ -47,7 +47,12 @@ const ProductInfo = () => {
             </div>
             <div className={classes["product-desc"]}>
                 <h2>{title}</h2>
-                <p>{info}</p>
+                <p className={classes.info}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                    nihil, eveniet aliquid culpa officia aut!</p>
                 <div className={classes["add-btn"]} onClick={() => handleItemIncrement(id)}>
                     <AddToCartButton
                         color="#555"
