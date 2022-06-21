@@ -5,7 +5,7 @@ import { CartContext } from '../Context'
 
 const CheckOut = () => {
     const {resetCart} = useContext(CartContext)
-    const history = useNavigate()
+    const  navigate = useNavigate()
     const [isAddressDetailsOpen,setIsAddressDetailsOpen] = useState(false)
     const [pickUpStations,setPickUpStations] = useState(false)
     const handleToggleAddressDetails = (e) => {
@@ -19,7 +19,7 @@ const CheckOut = () => {
     const handleOrders = (e) => {
         e.preventDefault()
         resetCart()
-        history.push("/thankyou")
+        navigate("/thankyou")
     }
     return (
         <div className={classes["checkout-container"]}>
@@ -29,17 +29,10 @@ const CheckOut = () => {
                     <h2>delivery method</h2>
                     <h4>How do you want your order delivered?</h4>
 
-                    <div className={` ${classes["input-control"]} ${classes["input-control-delivery"]}`}>
-                        <div className={classes["pick-up"]}>
-                            <input onClick={handlePickUpStation}id="store_pickup" name="delivery_method" type="radio" />
-                            <span></span>
-                            <label htmlFor='store_pickup'>
-                                <i className="fas fa-store"></i>
-                                    Pick up
-                            </label>
-                        </div>
+                    <div className={` ${classes["input-control"]} ${classes["input-control-delivery"]}`}> 
                     <div className={classes["transport"]}>
-                            <input  onClick={handleToggleAddressDetails}  id="transport" name="delivery_method" type="radio" />
+                            <input 
+                            onClick={handleToggleAddressDetails}  id="transport" name="delivery_method" type="radio" />
                             <span></span>
                             <label name="transport">
                                 <i className="fas fa-truck-moving"></i>
@@ -47,6 +40,14 @@ const CheckOut = () => {
                                     Ship
                             </label>
                     </div>
+                    <div className={classes["pick-up"]}>
+                            <input onClick={handlePickUpStation}id="store_pickup" name="delivery_method" type="radio" />
+                            <span></span>
+                            <label htmlFor='store_pickup'>
+                                <i className="fas fa-store"></i>
+                                    Pick up
+                            </label>
+                        </div>
                     </div>
                     <div className={ !pickUpStations ? classes["pickup-stores-container"] : ""}>
                         <h2>pickup stations</h2>
