@@ -1,13 +1,13 @@
 # Lapshop
 
+![electronics](https://user-images.githubusercontent.com/65482241/174968664-ac558114-3e26-441e-b384-80209c12dab5.png)
+
 Lapshop is an e-commerce web application for selling laptops.
 
 Check it live [here](https://lapstoro.netlify.app/)
 
 # Technologies Used
 React
-
-CSS
 
 Sanity.io
 
