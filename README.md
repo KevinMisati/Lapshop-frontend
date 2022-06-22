@@ -2,6 +2,8 @@
 
 Lapshop is an e-commerce web application for selling laptops.
 
+Check it live [here](https://lapstoro.netlify.app/)
+
 # Technologies Used
 React
 
