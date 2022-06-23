@@ -1,19 +1,36 @@
 import React,{useState} from 'react'
 import classes from "./SignUp.module.css"
 import { useNavigate } from 'react-router-dom'
+import firebaseConfig from "../../firebase/config"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
+
 
 const SignUp = () => {
-    const history = useNavigate()
+    const navigate = useNavigate()
     const [errMessage,setErrMessage] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [firstname,setFirstName] = useState("")
     const [lastname,setLastName] = useState("")
     
+    const auth = getAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
         if (email !== "" && password !== "" && firstname !=="" && lastname !== "" && email.includes("@")){
-            
+
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errMessage)
+            });
         }
         else{
             setErrMessage("Please fill in the form correctly, all fields are required.")

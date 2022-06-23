@@ -3,7 +3,7 @@ import classes from './MobileHeader.module.css'
 import { Link } from 'react-router-dom'
 import CartLink from './CartLink'
 
-const Header = () => {
+const Header = ({isUserLoggedIn}) => {
     const [isMenuOpen,setIsMenuOpen] = useState(false)
     const handleMenuToggling = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -58,7 +58,13 @@ const Header = () => {
                         
                     </li>
                     <li>
+                        {!isUserLoggedIn ? 
                         <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account/login">Login</Link>
+                        :
+                        <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account">
+                            <i class="fas fa-user"></i>
+                        </Link>
+                        }
                     </li>
                 </nav>
                 </section>

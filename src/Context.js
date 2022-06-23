@@ -12,6 +12,10 @@ const CartProvider = ({children}) => {
         number_of_items:0,
         products_in_cart:[],
         sub_total:0,
+        user:{
+            uid:"",
+            isLoggedIn:false
+        }
     }
 
     const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
@@ -20,6 +24,26 @@ const CartProvider = ({children}) => {
 
         localStorage.setItem('cartState',JSON.stringify(cartState))
     },[cartState])
+
+    const logInUser = (uid) => {
+        setCartState({
+            ...cartState,
+            user:{
+                uid:uid,
+                isLoggedIn:true
+            }
+        })
+    }
+
+    const logOutUser = () => {
+        setCartState({
+            ...cartState,
+            user:{
+                uid:"",
+                isLoggedIn:false
+            }
+        })
+    }
 
     const add_to_cart = (id) => {
         if (cartState.products_in_cart < 1 ) {
@@ -137,7 +161,11 @@ const CartProvider = ({children}) => {
                 decrease_sub_total:decrease_sub_total,
                 remove_product_from_cart:remove_product_from_cart,
                 increase_quantity:increase_quantity,
-                resetCart:resetCart
+                resetCart:resetCart,
+                user:cartState.user,
+                logInUser:logInUser,
+                logOutUser:logOutUser
+
             }
         }
         >

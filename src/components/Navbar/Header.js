@@ -4,7 +4,8 @@ import CartLink from './CartLink'
 import { Link } 
     from 'react-router-dom'
 
-const Header = () => {
+
+const Header = ({isUserLoggedIn}) => {
     
     
     return (
@@ -32,7 +33,14 @@ const Header = () => {
                     <CartLink />
                 </div>
                 <div className={classes.account}>
-                    <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
+                    {
+                        !isUserLoggedIn ?
+                        <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
+                        :
+                        <Link className={classes["nav-link"]} to={`/account`}>
+                            <i class="fas fa-user"></i>
+                        </Link>
+                    }
                     
                 </div>
             </div>

@@ -1,14 +1,27 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import classes from "./Logout.module.css"
 import { useNavigate } from "react-router-dom"
+import { getAuth, signOut } from "firebase/auth";
+import { CartContext } from '../../Context'
+
+
 
 const Logout = () => {
 
-    const history = useNavigate()
+    const{logOutUser} = useContext(CartContext)
+    const navigate = useNavigate()
 
+    const auth = getAuth();
     const handleLogOut = (e) => {
         e.preventDefault()
-        
+        signOut(auth).then(() => {
+            navigate("/")
+            console.log("success")
+            logOutUser()
+        }).catch((error) => {
+            console.log(error)
+        });
+
         
     }
     

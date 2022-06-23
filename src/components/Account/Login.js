@@ -1,9 +1,19 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
 import { useNavigate } from "react-router-dom";
+import firebaseConfig from "../../firebase/config"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { CartContext } from '../../Context'
+
+
+
 
 const Login = () => {
+
+    const{logInUser} = useContext(CartContext)
+
+    const navigate = useNavigate()
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [isformValid,setIsFormValid] = useState(false)
@@ -15,10 +25,23 @@ const Login = () => {
         if (email !== ""){
             setIsFormValid(true)
         } 
-    })
-
+    },[])
+    const auth = getAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log("heloo")
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            navigate("/")
+            console.log(user.uid)
+            logInUser(user.uid)
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errMessage)
+        });
     }
 
     const handleEmailChange = (e) => {
