@@ -16,32 +16,31 @@ const Login = () => {
     const navigate = useNavigate()
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const [isformValid,setIsFormValid] = useState(false)
     const [errMessage,setErrMessage] = useState("")
 
-
-    useEffect(() => {
-        console.log(email,password)
-        if (email !== ""){
-            setIsFormValid(true)
-        } 
-    },[])
     const auth = getAuth();
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log("heloo")
-        signInWithEmailAndPassword(auth, email, password)
+        //console.log("heloo")
+        if (password !== "" && email !== "" ){
+            signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
             navigate("/")
-            console.log(user.uid)
+            //console.log(user.uid)
             logInUser(user.uid)
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errMessage)
+            //console.log(errMessage)
         });
+        }
+
+        else{
+            setErrMessage("Please fill in the form correctly, all fields are required.")
+        }
+        
     }
 
     const handleEmailChange = (e) => {
@@ -51,7 +50,7 @@ const Login = () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
     }
-   
+
     return (
         <div className={classes["login-container"]}>
             <div className={classes["login"]}>

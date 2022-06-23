@@ -12,7 +12,7 @@ const Logout = () => {
     const{logOutUser} = useContext(CartContext)
     const navigate = useNavigate()
 
-    const {user} = useContext(CartContext)
+    //const {user} = useContext(CartContext)
 
     const auth = getAuth();
     const handleLogOut = (e) => {
@@ -25,21 +25,22 @@ const Logout = () => {
             console.log(error)
         });
     }
-
-    useEffect(() => {
-        const user = auth.currentUser;
+useEffect(() => {
+    const user = auth.currentUser;
         if (user !== null) {
         const displayName = user.displayName;
         const email = user.email;
         const photoURL = user.photoURL;
-        const emailVerified = user.emailVerified; 
-            console.log(email)
+        const emailVerified = user.emailVerified;
+        console.log(email)
         setUserDetails({
-            email:email,
+            email:email
         })
-    } 
-},[])
+        }
 
+},
+[])
+        
     
     return (
         <div className={classes['logout-container']}>

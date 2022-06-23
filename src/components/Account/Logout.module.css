@@ -6,11 +6,15 @@
     background:var(--gray-color);
     text-align: center;
 }
+.logout h1{
+    margin: 1rem;
+}
 .logout-container p{
     text-align: center;
     line-height: 1.5;
     color:#555;
     font-size: 1.1rem;
+
 }
 .logout h1,
 .logout h3{
