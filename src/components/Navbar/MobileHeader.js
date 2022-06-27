@@ -58,13 +58,14 @@ const Header = ({isUserLoggedIn}) => {
                         
                     </li>
                     <li>
-                        {!isUserLoggedIn ? 
+                                <Link onClick={handleMenuToggling} className={classes["nav-link"]} to="/account/login">Login</Link>
+                        {/* {!isUserLoggedIn ? 
                         <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account/login">Login</Link>
                         :
                         <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account">
                             <i class="fas fa-user"></i>
                         </Link>
-                        }
+                        } */}
                     </li>
                 </nav>
                 </section>

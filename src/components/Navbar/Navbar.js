@@ -6,19 +6,17 @@ import { CartContext } from '../../Context'
 
 const Navbar = () => {
 
-    const{user} = useContext(CartContext)
-    console.log(user)
+    //const{user} = useContext(CartContext)
+    //console.log(user)
     
     return (
         <div className={classes["navbar-container"]}>
             <div className={classes["large-screen"]}>
-                <Header isUserLoggedIn={user.isLoggedIn} />
+                <Header /* isUserLoggedIn={user.isLoggedIn} */ />
             </div>
             <div className={classes["small-screen"]} >
-                <MobileHeader isUserLoggedIn={user.isLoggedIn} />
-            </div>
-           
-            
+                <MobileHeader /* isUserLoggedIn={user.isLoggedIn} */ />
+            </div>  
         </div>
     )
 }

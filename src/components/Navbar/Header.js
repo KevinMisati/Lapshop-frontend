@@ -33,14 +33,15 @@ const Header = ({isUserLoggedIn}) => {
                     <CartLink />
                 </div>
                 <div className={classes.account}>
-                    {
+                        <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
+                    {/* {
                         !isUserLoggedIn ?
                         <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
                         :
                         <Link className={classes["nav-link"]} to={`/account`}>
                             <i class="fas fa-user"></i>
                         </Link>
-                    }
+                    } */}
                     
                 </div>
             </div>
