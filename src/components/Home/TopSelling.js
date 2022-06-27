@@ -21,7 +21,6 @@ const TopSelling = () => {
         `
 			)
 			.then((data) => {
-                console.log(data)
                 setTopSelling(data)
             })
 			.catch(console.error);
