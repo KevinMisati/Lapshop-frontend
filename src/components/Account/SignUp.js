@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import classes from "./SignUp.module.css"
 import { apiService } from '../../axios'
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const [errMessage,setErrMessage] = useState("")
     const [form,setForm] = useState({
         email:"",
@@ -12,12 +14,14 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (form.email !== "" && form.password !== "" && form.username !=="" && form.email.includes("@")){
-            console.log(form,"hello form")
             apiService({
-                url:"register",
+                url:"register/",
                 method:'POST',
                 data:form
+            }).then(() => {
+                navigate("/account/login")
             })
+            .catch(error => console.log(error)) 
         }
         else{
             setErrMessage("Please fill in the form correctly, all fields are required.")
