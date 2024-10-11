@@ -1,53 +1,35 @@
 import React,{useState} from 'react'
 import classes from "./SignUp.module.css"
-import { useNavigate } from 'react-router-dom'
-import firebaseConfig from "../../firebase/config"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-
-
+import { apiService } from '../../axios'
 
 const SignUp = () => {
-    const navigate = useNavigate()
     const [errMessage,setErrMessage] = useState("")
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
-    const [firstname,setFirstName] = useState("")
-    const [lastname,setLastName] = useState("")
-    
-    const auth = getAuth();
+    const [form,setForm] = useState({
+        email:"",
+        username:"",
+        password:"",
+    })
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (email !== "" && password !== "" && firstname !=="" && lastname !== "" && email.includes("@")){
-
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                
-                //console.log(user)
+        if (form.email !== "" && form.password !== "" && form.username !=="" && form.email.includes("@")){
+            console.log(form,"hello form")
+            apiService({
+                url:"register",
+                method:'POST',
+                data:form
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                //console.log(errMessage)
-            });
         }
         else{
             setErrMessage("Please fill in the form correctly, all fields are required.")
         }
         
     }
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
-    const handleFirstnameChange = (e) => {
-        setFirstName(e.target.value)
-    }
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value)
+
+    const handleFormChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]:e.target.value
+        })
     }
     return (
         <div className={classes["signup-container"]}>
@@ -59,19 +41,15 @@ const SignUp = () => {
                     }
                     <div className={classes["input-control"]}>
                         <label htmlFor='email'>email</label>
-                        <input onChange={handleEmailChange} id='email' type='email' name='email' value={email} />
+                        <input onChange={handleFormChange} id='email' type='email' name='email' value={form.email} />
                     </div>
                     <div className={classes["input-control"]}>
-                        <label htmlFor='firstname'>first name</label>
-                        <input onChange={handleFirstnameChange} id='firstname' type='text' name='firstname' value={firstname} />
-                    </div>
-                    <div className={classes["input-control"]}>
-                        <label htmlFor='lastname'>last name</label>
-                        <input onChange={handleLastNameChange} id='lastname' type='text' name='lastname' value={lastname} />
+                        <label htmlFor='username'>username</label>
+                        <input onChange={handleFormChange} id='username' type='text' name='username' value={form.username} />
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>passowd</label>
-                        <input onChange={handlePasswordChange} id='password' type='password' name='password' value={password} />
+                        <input onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
                     </div>
                     <div className={classes["input-control"]}>
                         <button onClick={handleSubmit} className={classes["register-btn"]}>create account</button>
