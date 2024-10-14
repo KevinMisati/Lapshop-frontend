@@ -51,3 +51,7 @@
     color: red;
     max-width: 500px;
 }
+.success-message{
+    color: green;
+    max-width: 500px;
+}

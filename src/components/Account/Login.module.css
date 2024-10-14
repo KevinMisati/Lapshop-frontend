@@ -62,4 +62,9 @@
 }
 .err-message{
     color: red;
+    margin-top: 1rem;
+}
+.success-message{
+    color: green;
+    margin-top: 1rem;
 }

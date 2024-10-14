@@ -6,6 +6,7 @@ import { apiService } from '../../axios'
 const SignUp = () => {
     const navigate = useNavigate()
     const [errMessage,setErrMessage] = useState("")
+    const [successMessage,setSuccessMessage] = useState("")
     const [form,setForm] = useState({
         email:"",
         username:"",
@@ -19,7 +20,10 @@ const SignUp = () => {
                 method:'POST',
                 data:form
             }).then(() => {
-                navigate("/account/login")
+                setSuccessMessage("Account created successfully")
+                setTimeout(() => {
+                    navigate("/account/login")
+                },2000)
             })
             .catch(error => console.log(error)) 
         }
@@ -40,9 +44,6 @@ const SignUp = () => {
             <div className={classes["signup"]}>
                 <h1>Create Account</h1>
                 <form>
-                    {
-                        <p className={classes["err-message"]}>{errMessage}</p>
-                    }
                     <div className={classes["input-control"]}>
                         <label htmlFor='email'>email</label>
                         <input onChange={handleFormChange} id='email' type='email' name='email' value={form.email} />
@@ -58,6 +59,8 @@ const SignUp = () => {
                     <div className={classes["input-control"]}>
                         <button onClick={handleSubmit} className={classes["register-btn"]}>create account</button>
                     </div>
+                    {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}
+                    {successMessage && <p className={classes["success-message"]}>{successMessage}</p>}
                 </form>
             </div>
         </div>

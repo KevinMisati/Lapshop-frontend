@@ -1,13 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import classes from './Header.module.css'
 import CartLink from './CartLink'
-import { Link } 
-    from 'react-router-dom'
+import { Link }  from 'react-router-dom'
+import { AccountContext } from '../../AccountContext'
 
 
 const Header = ({isUserLoggedIn}) => {
-    
-    
+    const {userDetails} = useContext(AccountContext)
     return (
         <header className={classes["header-container"]}>
             <div className={classes["header"]}>
@@ -33,15 +32,14 @@ const Header = ({isUserLoggedIn}) => {
                     <CartLink />
                 </div>
                 <div className={classes.account}>
-                        <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
-                    {/* {
-                        !isUserLoggedIn ?
+                    {
+                        !userDetails.user_id ?
                         <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
                         :
                         <Link className={classes["nav-link"]} to={`/account`}>
                             <i class="fas fa-user"></i>
                         </Link>
-                    } */}
+                    } 
                     
                 </div>
             </div>

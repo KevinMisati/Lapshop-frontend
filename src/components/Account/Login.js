@@ -1,40 +1,42 @@
-import React,{useState,useEffect,useContext} from 'react'
+import React,{useState,useContext} from 'react'
+import { useNavigate } from 'react-router-dom';
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
-import { useNavigate } from "react-router-dom";
-import firebaseConfig from "../../firebase/config"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { CartContext } from '../../Context'
-
-
-
+import { apiService } from '../../axios';
+import { CartContext } from '../../Context';
+import { AccountContext } from '../../AccountContext';
 
 const Login = () => {
-
-    const{logInUser} = useContext(CartContext)
-
     const navigate = useNavigate()
-    const [email,setEmail] = useState("")
-    const [password,setPassword] = useState("")
     const [errMessage,setErrMessage] = useState("")
+    const [successMessage,setSuccessMessage] = useState("")
+    const [form,setForm] = useState({
+        email:"",
+        password:"",
+    })
 
-    const auth = getAuth();
+    const {loginUser} = useContext(AccountContext)
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        //console.log("heloo")
-        if (password !== "" && email !== "" ){
-            signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            navigate("/")
-            //console.log(user.uid)
-            logInUser(user.uid)
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            //console.log(errMessage)
-        });
+        if (form.password !== "" && form.email !== "" ){
+            apiService({
+                url:"token/",
+                method:"POST",
+                data:form
+            }).then((res) => {
+                localStorage.setItem("userDetails",JSON.stringify(res.data))
+                loginUser(res.data)
+                setSuccessMessage("Logged in successfully")
+                setTimeout(() => {
+                    navigate("/")
+                },2000)
+            }).catch(error => {
+                console.log(error)
+                if(error.data){
+                    setErrMessage(error.data.detail)
+                }
+            })
         }
 
         else{
@@ -43,12 +45,13 @@ const Login = () => {
         
     }
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
-    
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
+    const handleFormChange = (e) => {
+        setErrMessage("")
+        setSuccessMessage("")
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+        })
     }
 
     return (
@@ -56,17 +59,18 @@ const Login = () => {
             <div className={classes["login"]}>
                 <h1>Login</h1>
                 <form>
-                    {
-                        <p className={classes["err-message"]}>{errMessage}</p>
-                    }
                     <div className={classes["input-control"]}>
                         <label htmlFor='email'>email</label>
-                        <input required={true} onChange={handleEmailChange} id='email' type='email' name='email' value={email} />
+                        <input required={true} onChange={handleFormChange} id='email' type='email' name='email' value={form.email} />
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>passowd</label>
-                        <input required={true} onChange={handlePasswordChange} id='password' type='password' name='password' value={password} />
+                        <input required={true} onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
                     </div>
+
+                    {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}
+                    {successMessage && <p className={classes["success-message"]}>{successMessage}</p>}
+
                     <div className={classes["input-control"]}>
                         <button onClick={handleSubmit} className={classes["signin-btn"]}>sign in</button>
                     </div>
