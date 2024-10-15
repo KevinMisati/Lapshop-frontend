@@ -1,20 +1,29 @@
 import React,{useContext,useState,useEffect} from 'react'
 import classes from "./Logout.module.css"
 import { useNavigate } from "react-router-dom"
-import { CartContext } from '../../Context'
-
-
+import {AccountContext} from "../../AccountContext"
+import { apiService } from '../../axios'
 
 const Logout = () => {
 
-    const [userDetails,setUserDetails] = useState({})
-    const{logOutUser} = useContext(CartContext)
+    const{userDetails,logoutUser} = useContext(AccountContext)
     const navigate = useNavigate()
 
     const handleLogOut = (e) => {
         e.preventDefault()
-    
+        apiService({
+            url:"logout/",
+            method:"POST",
+            data:{refresh:userDetails.refresh}
+        }).then(() => {
+            logoutUser()
+            navigate("/")
+        }).catch(error => console.log(error))
     }   
+
+    const handleLogIn = () => {
+        navigate("/account/login")
+    }
     
     return (
         <div className={classes['logout-container']}>
@@ -27,7 +36,10 @@ const Logout = () => {
                     </div>
                 </div>
                 <div className={classes["logout-btn"]}>
-                    <button onClick={handleLogOut}>log out</button>
+                    {userDetails.user_id ? 
+                        <button onClick={handleLogOut}>Log out</button> :
+                        <button onClick={handleLogIn}>Log in</button>
+                    }
                 </div>
             </div>
         </div>

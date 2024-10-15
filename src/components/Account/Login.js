@@ -25,7 +25,6 @@ const Login = () => {
                 method:"POST",
                 data:form
             }).then((res) => {
-                localStorage.setItem("userDetails",JSON.stringify(res.data))
                 loginUser(res.data)
                 setSuccessMessage("Logged in successfully")
                 setTimeout(() => {
