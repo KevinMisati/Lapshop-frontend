@@ -1,12 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
-import sanityClient from "../sanityClient"
 import { apiService } from '../axios'
 
 
 const Store = () => {
-    const [products,setProducts] = useState([])
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
     const [brandFilter,setBrandFilter] = useState("")
@@ -43,28 +41,25 @@ const Store = () => {
 
 
 
-    const handleLaptopFiltration = (brandId) => {
-        setBrandFilter(brandId)
+    const handleLaptopFiltration = (e) => {
+        setBrandFilter(e.target.value)
     }
 
     return (
         
         <div className={classes["products-container"]}>
             <div className={classes["price-filter-container"]}>
-                <ul className={classes["price-filter"]}>
-                <li>
-                    <button autoFocus onClick={() => handleLaptopFiltration("all")}>
-                        All
-                    </button>
-                </li>
+                <label for="laptop">Brands:</label>
+                <select 
+                    id="laptop" 
+                    name="laptop"
+                    onChange={handleLaptopFiltration}
+                >
+                    <option value="">All</option>
                     {brands.map(brand => (
-                        <li>
-                            <button onClick={() => handleLaptopFiltration(brand.id)}>
-                                {brand.name}
-                            </button>
-                        </li>
+                        <option value={brand.id}>{brand.name}</option>
                     ))}
-                </ul>
+                </select>
             </div>
             <div className={classes.products}>
                 <Products products={filteredProducts} />

@@ -1,14 +1,31 @@
 
-.price-filter-container{
-    background-color: var(--gray-color);
+.products-container{
     display: flex;
-    align-items: center;
+}
+.products{
+    display: flex;
     justify-content: center;
+    width: 100%;
+}
+.price-filter-container label{
+    display: block;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+}
+.price-filter-container select{
+    border: 1px solid var(--clr-accent);
+    height: 1.35rem;
+}
+.price-filter-container select:focus-visible{
+    border: 1px solid var(--clr-accent);
+    outline: none;
+}
+.price-filter-container option{
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    height: 1rem;
 }
 .price-filter{
     width: 100%;
     max-width: 1144px;
-    
     display: flex;
     margin: 2rem 0 -2rem 0;
     padding: 1rem 0;
