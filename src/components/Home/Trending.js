@@ -2,35 +2,23 @@ import React,{useEffect,useState} from 'react'
 import classes from "./TopSelling.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
-import sanityClient from "../../sanityClient"
+import { apiService } from '../../axios'
 
 const TopSelling = () => {
     const [topSelling,setTopSelling] = useState([])
     useEffect(resp => {
-        sanityClient
-			.fetch(
-				`*[_type == 'product' && topSelling == true]{                                           
-                _id,
-                _type,
-                title,
-                img,
-                newPrice,
-                oldPrice,
-                topSelling
-            }
-        `
-			)
-			.then((data) => {
-                setTopSelling(data)
-            })
-			.catch(console.error);
+        apiService({
+            url:"laptops/?trending=true",
+            method:"GET",
+        }).then(res => setTopSelling(res.data))
+        .catch(error => console.log(error))
     },[]) 
 
     return (
         <div className={classes["top-selling_container"]}>
         <div className={classes["top-selling"]}>
             <header className={classes["top-selling_header"]}>
-                <Title title="Latest products"  />
+                <Title title="Trending products"  />
             </header>
             <main className={classes.products}>
                 {topSelling.map(product => {
@@ -38,8 +26,8 @@ const TopSelling = () => {
                         
                         <SingleProduct 
                             key={product._id}
-                            name={product.title}
-                            img={product.img}
+                            name={product.model_name}
+                            image={product.image}
                             newPrice={product.newPrice}
                             oldPrice={product.oldPrice}
                             id={product._id}

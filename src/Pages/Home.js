@@ -1,6 +1,6 @@
 import React from 'react'
 import Banner from '../components/Home/Banner'
-import TopSelling from '../components/Home/TopSelling'
+import Trending from '../components/Home/Trending'
 
 import classes from "./home.module.css"
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
           <Banner />
         </div>
         <div>
-          <TopSelling />
+          <Trending />
         </div>
         
         
