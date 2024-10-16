@@ -5,7 +5,7 @@ import { Link} from 'react-router-dom'
 import { CartContext } from "../../Context"
 
 
-const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
+const SingleProduct = ({id,name,image,newPrice,oldPrice}) => {
 
     const {add_to_cart} = useContext(CartContext)
     const handleItemIncrement = (id) => {
@@ -35,7 +35,7 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                     </div>
                     <div className={classes.overlay}></div>
                 <div className={classes["img-container_inner"]}>
-                    <img alt={name} src={img}></img>
+                    <img alt={name} src={image}></img>
                 </div>
                 </div>
                 <div className={classes["product-info"]}>
