@@ -25,12 +25,7 @@ const TopSelling = () => {
                     return (
                         
                         <SingleProduct 
-                            key={product._id}
-                            name={product.model_name}
-                            image={product.image}
-                            newPrice={product.newPrice}
-                            oldPrice={product.oldPrice}
-                            id={product._id}
+                            product={product}
                         /> 
                     )
                 })}

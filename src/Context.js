@@ -21,7 +21,6 @@ const CartProvider = ({children}) => {
     const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
 
     useEffect(()=> {
-
         localStorage.setItem('cartState',JSON.stringify(cartState))
     },[cartState])
 
@@ -45,58 +44,32 @@ const CartProvider = ({children}) => {
         })
     }
 
-    const add_to_cart = (id) => {
+    const add_to_cart = (product) => {
         if (cartState.products_in_cart < 1 ) {
-            sanityClient
-                .fetch(
-                    `*[_type == 'product' && _id == "${id}" ]{   
-                title,
-                img,
-                new_price,
-                _id
-            }`)
-                .then(resp => {
-                   setCartState(
+            
+                setCartState(
                         {
             ...cartState,
              number_of_items:cartState.number_of_items + 1,
 
-            products_in_cart:[{...resp[0],quantity:1
+            products_in_cart:[{...product,quantity:1
                     },...cartState.products_in_cart],
 
-                    sub_total:cartState.sub_total + Number(resp[0].new_price)
+                    sub_total:cartState.sub_total + Number(product.price)
                 }) 
                 
-                }) 
-                .catch(error => {
-                    throw error
-                })
+                
         }
         else {
-            const is_product_in_cart = cartState.products_in_cart.filter(product => product._id === id)
+            const is_product_in_cart = cartState.products_in_cart.filter(prod => prod.id === product.id)
             
             if (is_product_in_cart.length < 1 ) {
-                sanityClient
-                    .fetch(
-                        `*[_type == 'product' && _id == "${id}" ]{   
-                            title,
-                            img,
-                            _id,
-                            new_price
-                        }`)
-
-                    .then(resp => {
-                        setCartState({
-                            ...cartState,
-                            number_of_items: cartState.number_of_items + 1,
-                            products_in_cart: [{ ...resp[0], quantity: 1 }, ...cartState.products_in_cart],
-                            sub_total: cartState.sub_total + Number(resp[0].new_price)
-                        })
-
-                    })
-                    .catch(error => {
-                        throw error
-                    })
+                setCartState({
+                    ...cartState,
+                    number_of_items: cartState.number_of_items + 1,
+                    products_in_cart: [{ ...product, quantity: 1 }, ...cartState.products_in_cart],
+                    sub_total: cartState.sub_total + Number(product.price)
+                })
             }
             }
     } 
@@ -132,11 +105,10 @@ const CartProvider = ({children}) => {
     const remove_product_from_cart = (id,price,quantity) => {
         setCartState({
             ...cartState,
-            products_in_cart:cartState.products_in_cart.filter(product => product._id !== id),
+            products_in_cart:cartState.products_in_cart.filter(product => product.id !== id),
             sub_total:cartState.sub_total - (price * quantity),
             number_of_items:cartState.number_of_items - 1
         })
-        
     }
     const resetCart =() => {
     setCartState( {
@@ -145,11 +117,6 @@ const CartProvider = ({children}) => {
         sub_total:0,
     })
     }
-    
-    
-
-
-
     return (
         <CartContext.Provider value={
             {

@@ -11,12 +11,7 @@ const Products = ({products}) => {
                 products.map(product => {
                     return (
                         <SingleProduct
-                            image={product.image}
-                            name={product.model_name}
-                            newPrice={product.new_price}
-                            oldPrice={product.old_price}
-                            key={product.id}
-                            id={product.id}
+                            product={product}
                         />
                     )
                 })

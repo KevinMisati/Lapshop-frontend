@@ -33,15 +33,10 @@ const Cart = () => {
                 <div>
                 <div className={classes["products"]}>
                 {
-                    products_in_cart.map (({_id,img,title,new_price,quantity}) => {
+                    products_in_cart.map (product => {
                         return (
                             <SingleProduct
-                                    key={_id}
-                                    img={img}
-                                    title={title}
-                                    price={new_price}
-                                    id={_id}
-                                    quantity={quantity}
+                                product={product}
                             />
                         )
                     })

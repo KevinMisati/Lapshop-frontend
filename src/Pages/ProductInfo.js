@@ -11,7 +11,7 @@ const ProductInfo = () => {
 
     const {add_to_cart} = useContext(CartContext)
     const handleItemIncrement = (id) => {
-        add_to_cart(id)
+        add_to_cart(product)
     }
 
     useEffect(() => {
@@ -33,13 +33,9 @@ const ProductInfo = () => {
             </div>
             <div className={classes["product-desc"]}>
                 <h2>{product.model_name}</h2>
-                <p className={classes.info}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                    nihil, eveniet aliquid culpa officia aut!</p>
-                <div className={classes["add-btn"]} onClick={() => handleItemIncrement(id)}>
+                <p className={classes.info}>{product.description}</p>
+                <p className={classes.info}>$ {product.price}</p>
+                <div className={classes["add-btn"]} onClick={handleItemIncrement}>
                     <AddToCartButton
                         color="#555"
                         font="1.05rem"
