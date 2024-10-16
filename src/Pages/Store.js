@@ -9,7 +9,7 @@ const Store = () => {
     const [products,setProducts] = useState([])
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
-    const [laptops,setLaptops]  = useState([])
+    const [brandFilter,setBrandFilter] = useState("")
     
     const getBrands = () => {
         apiService({
@@ -22,8 +22,10 @@ const Store = () => {
     }
 
     const getLaptops = () => {
+        let url = "laptops/"
+        if(brandFilter) url = `laptops/?brand=${brandFilter}`
         apiService({
-            url:"laptops/",
+            url,
             method:"GET",
         }).then(res => {
             console.log(res)
@@ -37,12 +39,12 @@ const Store = () => {
 
     useEffect(() => {
         getLaptops()
-    }, []) 
+    }, [brandFilter]) 
 
 
 
-    const handleLaptopFiltration = () => {
-        setFilteredProducts(products)
+    const handleLaptopFiltration = (brandId) => {
+        setBrandFilter(brandId)
     }
 
     return (
