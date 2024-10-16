@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import classes from './MobileHeader.module.css'
 import { Link } from 'react-router-dom'
 import CartLink from './CartLink'
+import { AccountContext } from '../../AccountContext'
 
 const Header = ({isUserLoggedIn}) => {
     const [isMenuOpen,setIsMenuOpen] = useState(false)
+    const {userDetails} = useContext(AccountContext)
     const handleMenuToggling = () => {
         setIsMenuOpen(!isMenuOpen)
         document.body.style.overflow =isMenuOpen ? "" : "hidden" 
@@ -58,14 +60,14 @@ const Header = ({isUserLoggedIn}) => {
                         
                     </li>
                     <li>
-                                <Link onClick={handleMenuToggling} className={classes["nav-link"]} to="/account/login">Login</Link>
-                        {/* {!isUserLoggedIn ? 
-                        <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account/login">Login</Link>
+                    {
+                        !userDetails.user_id ?
+                        <Link onClick={handleMenuToggling} className={classes["nav-link"]} to={`/account/login`}>Login</Link>
                         :
-                        <Link onClick={handleMenuToggling }  className={classes["nav-link"]} to="/account">
-                            <i class="fas fa-user"></i>
+                        <Link onClick={handleMenuToggling} className={classes["nav-link"]} to={`/account`}>
+                            Profile
                         </Link>
-                        } */}
+                    }
                     </li>
                 </nav>
                 </section>

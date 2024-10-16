@@ -63,7 +63,7 @@ const Login = () => {
                         <input required={true} onChange={handleFormChange} id='email' type='email' name='email' value={form.email} />
                     </div>
                     <div className={classes["input-control"]}>
-                        <label htmlFor='password'>passowd</label>
+                        <label htmlFor='password'>password</label>
                         <input required={true} onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
                     </div>
 
