@@ -3,7 +3,7 @@ import classes from "./ProductInfo.module.css"
 import {useParams} from "react-router-dom"
 import AddToCartButton from '../components/Utilities/AddToCartButton'
 import { CartContext } from '../Context'
-import sanityClient from "../sanityClient"
+import { apiService } from '../axios'
 
 const ProductInfo = () => {
     const [product,setProduct] = useState({})
@@ -14,39 +14,25 @@ const ProductInfo = () => {
         add_to_cart(id)
     }
 
-    useEffect(resp => {
-        sanityClient
-            .fetch(
-                `*[_type == 'product' && _id == "${id}" ]{   
-                title,
-                img,
-                info
-            }
-        `
-            )
-            .then((data) => {
-                const text = data[0].info[0].children[0].text
-                setProduct({
-                    title:data[0].title,
-                    img:data[0].img,
-                    info:text
-
-                })
-            })
-            .catch(console.error);
+    useEffect(() => {
+        apiService({
+            url:`laptops/${id}`,
+            method:"GET"
+        }).then(res => setProduct(res.data))
+        .catch(error => console.log(error)) 
     }, [id]) 
 
     
     
-    const {title,img,info} = product
+    const {title,image,info} = product
     return (
         <div className={classes["product-info-container"]}>
         <div className={classes["product-info"]}>
             <div className={classes["img-container"]}>
-                <img alt={title} src={img} />
+                <img alt={product.model_name} src={product.image} />
             </div>
             <div className={classes["product-desc"]}>
-                <h2>{title}</h2>
+                <h2>{product.model_name}</h2>
                 <p className={classes.info}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                     molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
                     numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
