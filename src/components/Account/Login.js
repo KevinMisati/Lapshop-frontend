@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
 import { apiService } from '../../axios';
-import { CartContext } from '../../Context';
 import { AccountContext } from '../../AccountContext';
+import Snackbar from '../Snackbar';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -14,6 +14,7 @@ const Login = () => {
         email:"",
         password:"",
     })
+    const [showSnackbar, setShowSnackbar] = useState(false);
 
     const {loginUser} = useContext(AccountContext)
 
@@ -27,6 +28,7 @@ const Login = () => {
             }).then((res) => {
                 loginUser(res.data)
                 setSuccessMessage("Logged in successfully")
+                setShowSnackbar(true)
                 setTimeout(() => {
                     navigate("/")
                 },2000)
@@ -68,7 +70,6 @@ const Login = () => {
                     </div>
 
                     {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}
-                    {successMessage && <p className={classes["success-message"]}>{successMessage}</p>}
 
                     <div className={classes["input-control"]}>
                         <button onClick={handleSubmit} className={classes["signin-btn"]}>sign in</button>
@@ -80,6 +81,12 @@ const Login = () => {
                     </Link>
                 </h5>
             </div>
+            <Snackbar
+                message={successMessage}
+                show={showSnackbar}
+                type="success"
+                onClose={() => setShowSnackbar(false)}
+            />
         </div>
     )
 }
