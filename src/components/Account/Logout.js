@@ -18,7 +18,11 @@ const Logout = () => {
         }).then(() => {
             logoutUser()
             navigate("/")
-        }).catch(error => console.log(error))
+        }).catch(error => {
+            console.log(error)
+            logoutUser()
+            navigate("/")
+        })
     }   
 
     const handleLogIn = () => {
