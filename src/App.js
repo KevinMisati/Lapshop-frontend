@@ -13,6 +13,7 @@ import Logout from "./components/Account/Logout"
 import Login from "./components/Account/Login"
 import SignUp from "./components/Account/SignUp"
 import ResetPassword from "./components/Account/ResetPassword";
+import NewPassword from "./components/Account/NewPassword";
 
 import Cart from "./Pages/Cart"
 import Store from "./Pages/Store"
@@ -38,7 +39,7 @@ const App = () => {
             <Route exact path={"login"} element={<Login />} />
             <Route path={"signup"} element={<SignUp />} />
             <Route path={"reset-password/"} element={<ResetPassword />} />
-            <Route path={"reset-password/:uid/:token"} element={<ResetPassword />} />
+            <Route path={"reset-password/:uid/:token"} element={<NewPassword />} />
           </Route>
           <Route  path="/cart" element={<Cart />} />
           <Route exact path="/store" element={<Store />} />
