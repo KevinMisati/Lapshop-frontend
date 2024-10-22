@@ -47,6 +47,10 @@
     text-transform: capitalize;
     font-size: 1.1rem;
 }
+.createForgot-links{
+    display: flex;
+    justify-content: space-between;
+}
 .create-account-link{
     font-size: 1.1rem;
 }

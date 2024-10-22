@@ -6,13 +6,13 @@ import { apiService } from '../../axios';
 import { AccountContext } from '../../AccountContext';
 import Snackbar from '../Snackbar';
 
-const Login = () => {
-    const navigate = useNavigate()
+const ResetPassword = () => {
+
+  const navigate = useNavigate()
     const [errMessage,setErrMessage] = useState("")
     const [successMessage,setSuccessMessage] = useState("")
     const [form,setForm] = useState({
         email:"",
-        password:"",
     })
     const [showSnackbar, setShowSnackbar] = useState(false);
 
@@ -20,18 +20,15 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (form.password !== "" && form.email !== "" ){
+        if (form.email !== "" ){
             apiService({
-                url:"token/",
+                url:"password-reset/",
                 method:"POST",
                 data:form
             }).then((res) => {
-                loginUser(res.data)
-                setSuccessMessage("Logged in successfully")
+                setSuccessMessage("Reset email sent")
                 setShowSnackbar(true)
-                setTimeout(() => {
-                    navigate("/")
-                },2000)
+                setTimeout(() => {navigate('/account/login/')},2000)
             }).catch(error => {
                 console.log(error)
                 if(error.data){
@@ -41,7 +38,7 @@ const Login = () => {
         }
 
         else{
-            setErrMessage("Please fill in the form correctly, all fields are required.")
+            setErrMessage("The email field is required")
         }
         
     }
@@ -55,38 +52,23 @@ const Login = () => {
         })
     }
 
-    return (
-        <div className={classes["login-container"]}>
+  return (
+    <div className={classes["login-container"]}>
             <div className={classes["login"]}>
-                <h1>Login</h1>
+                <h1>Reset Password</h1>
                 <form>
                     <div className={classes["input-control"]}>
                         <label htmlFor='email'>email</label>
                         <input required={true} onChange={handleFormChange} id='email' type='email' name='email' value={form.email} />
                     </div>
-                    <div className={classes["input-control"]}>
-                        <label htmlFor='password'>password</label>
-                        <input required={true} onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
-                    </div>
+                    
 
                     {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}
 
                     <div className={classes["input-control"]}>
-                        <button onClick={handleSubmit} className={classes["signin-btn"]}>sign in</button>
+                        <button onClick={handleSubmit} className={classes["signin-btn"]}>Reset</button>
                     </div>
                 </form>
-                <div className={classes["createForgot-links"]}>
-                    <h5 className={classes["create-account-link"]}>
-                        <Link to="/account/reset-password" >
-                            forgot password
-                        </Link>
-                    </h5>
-                    <h5 className={classes["create-account-link"]}>
-                        <Link to="/account/signup" >
-                            create account
-                        </Link>
-                    </h5>
-                </div>
             </div>
             <Snackbar
                 message={successMessage}
@@ -95,7 +77,7 @@ const Login = () => {
                 onClose={() => setShowSnackbar(false)}
             />
         </div>
-    )
+  )
 }
 
-export default Login
+export default ResetPassword
