@@ -1,5 +1,4 @@
 import React,{createContext,useState,useEffect} from 'react'
-import sanityClient from "./sanityClient"
 
 
 const CartContext = createContext()
@@ -21,6 +20,7 @@ const CartProvider = ({children}) => {
     const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
 
     useEffect(()=> {
+        console.log(cartState,"hello cart state")
         localStorage.setItem('cartState',JSON.stringify(cartState))
     },[cartState])
 
@@ -75,26 +75,30 @@ const CartProvider = ({children}) => {
     } 
     const increase_quantity = (quantity,id) => {
         let products = cartState.products_in_cart 
-        let product = products.filter(prod => prod._id === id)
-        const index = products.findIndex(prod => prod._id === id)
+        let product = products.filter(prod => prod.id === id)
+        const index = products.findIndex(prod => prod.id === id)
         product = {
             ...products[index],
             quantity:quantity
         }
-
         products[index] = product
+        setCartState({
+            ...cartState,
+            products_in_cart:products
+        })
 }
 
 
-    const increase_sub_total = (price,id) => {
+    const increase_sub_total = (price) => {
+        console.log(cartState.sub_total,price,cartState.sub_total + Number(price),"hello here 123,,,,")
         setCartState({
             ...cartState,
             sub_total:cartState.sub_total + Number(price)
         })
-        
     }
 
     const decrease_sub_total = (price) => {
+        console.log(cartState.sub_total,price,cartState.sub_total - Number(price),"hello here 345,,,,")
         setCartState({
             ...cartState,
             sub_total:cartState.sub_total - Number(price)

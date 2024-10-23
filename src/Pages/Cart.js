@@ -36,6 +36,7 @@ const Cart = () => {
                     products_in_cart.map (product => {
                         return (
                             <SingleProduct
+                                key={product.id}
                                 product={product}
                             />
                         )

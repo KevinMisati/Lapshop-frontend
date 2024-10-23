@@ -25,21 +25,13 @@ const SingleProduct = ({product}) => {
     const [totalPriceOfSpecificItem, settotalPriceOfSpecificItem] = useState(Number(defaultPrice))
     
 
-    const handleItemIncrement = () => {
-
-        
-        settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(product.price))
-        increase_sub_total(product.price)
+    const handleItemIncrement = (id,price) => {
+        increase_sub_total(price)
+        settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(price))
         setQuantityOfSpecificItem(prev => prev + 1)
-        increase_quantity(quantityOfSpecificItem,product.id)
     }
-    useEffect(() => {
-        increase_quantity(quantityOfSpecificItem,product.id)
-    },[quantityOfSpecificItem,product.id]) 
-    
 
-
-  const handleItemdecrement = (id,price,quantity) => {
+    const handleItemdecrement = (id,price,quantity) => {
         if (quantityOfSpecificItem > 1){
             decrease_sub_total(price)
             settotalPriceOfSpecificItem(prevPrice => prevPrice - Number(price))
@@ -49,6 +41,11 @@ const SingleProduct = ({product}) => {
             remove_product_from_cart(id,price,1)
         }
     }
+
+    useEffect(() => {
+        increase_quantity(quantityOfSpecificItem,product.id)
+    },[quantityOfSpecificItem,product.id]) 
+    
     const handleProductRemoval = (id,price,quantity) => {
         remove_product_from_cart(id,price,quantity)
     } 
@@ -68,11 +65,11 @@ const SingleProduct = ({product}) => {
 
             <span className={classes["quantity"]}>{quantityOfSpecificItem }</span>
 
-                    <button onClick={handleItemIncrement} className={classes["add-btn"]}>+</button>
+                    <button onClick={() => handleItemIncrement(product.id,product.price)} className={classes["add-btn"]}>+</button>
 
                 </div>
                 <div className={classes["price"]}>
-                    {totalPriceOfSpecificItem.toFixed(2)}
+                    {product.price /* totalPriceOfSpecificItem.toFixed(2) */}
                 </div>
                 <div className={classes["remove-product"]}>
                     <button onClick={() => handleProductRemoval(product.id,product.price,quantityOfSpecificItem)}>Remove</button>
