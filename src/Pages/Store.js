@@ -30,8 +30,9 @@ const Store = () => {
         }).then(res => {
             console.log(res)
             setFilteredProducts(res.data)
-        }).catch(error => console.log(error))
-        setIsLoading(false)
+        })
+        .catch(error => console.log(error))
+        .finally(setIsLoading(false))
     }
 
     useEffect(() => {
