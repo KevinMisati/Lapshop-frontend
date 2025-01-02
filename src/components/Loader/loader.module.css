@@ -2,8 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  width: calc(100vw - 65px);
+  width: 100%;
 }
 
 .spinner {
