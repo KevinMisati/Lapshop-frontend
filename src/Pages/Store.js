@@ -28,11 +28,13 @@ const Store = () => {
             url,
             method:"GET",
         }).then(res => {
-            console.log(res)
             setFilteredProducts(res.data)
+            setIsLoading(false)
         })
-        .catch(error => console.log(error))
-        .finally(setIsLoading(false))
+        .catch(error => {
+            console.log(error)
+            setIsLoading(false)
+        })
     }
 
     useEffect(() => {

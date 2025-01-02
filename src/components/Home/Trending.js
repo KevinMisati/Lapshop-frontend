@@ -12,9 +12,14 @@ const TopSelling = () => {
         apiService({
             url:"laptops/?trending=true",
             method:"GET",
-        }).then(res => setTopSelling(res.data))
-        .catch(error => console.log(error))
-        .finally(setIsLoading(false))
+        }).then(res => {
+            setTopSelling(res.data)
+            setIsLoading(false)
+        })
+        .catch(error => {
+            console.log(error)
+            setIsLoading(false)
+        })
     },[]) 
 
     return (
