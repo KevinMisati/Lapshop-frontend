@@ -1,0 +1,114 @@
+.single-product{
+    text-align: center;
+    margin: 0rem;
+    margin:.5rem;
+    padding: .5rem;
+    background:var(--clr-light);
+    border-radius: 4px;
+}
+.img-container_outer{
+    height: auto;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+} 
+.eye-icon{
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: .5rem;
+    z-index: 20;
+    transition: .5s all;
+}
+.eye-icon a {
+    color: inherit;
+}
+.eye-icon:hover{
+    background-color: #ff5063;
+}
+.img-container_outer:hover .eye-icon{
+    top: 50%;
+    left: 50%;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ADACAC;
+    background-color: #858282;
+    z-index: 1;
+    transform: rotate(20deg) translateX(20px) translateY(0px) translateZ(20px);
+    opacity: 0;
+    transition: .5s all;
+}
+.img-container_outer:hover .overlay{
+    opacity: .5;
+    transform: none;
+}
+.img-container_inner{
+    width:225px !important;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-container_inner img{
+    max-width:100%;
+    height:200px;
+    height: auto;
+    object-fit: contain;
+}
+.product-info{
+    margin: .5rem auto;
+}
+.product-name a{
+line-height: 1.1;
+font-size: 1.2rem;
+color: var(--red-color);
+text-decoration: none;
+font-weight: 700;
+transition: .5s all;
+}
+.product-name a:hover{
+    color:#3C43A4 ;
+}
+.product-name{
+    margin: 0rem auto 1rem 0 ;
+}
+
+@media screen and (max-width:600px){
+    .single-product-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .img-container_outer{
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+} 
+.img-container_inner{
+    text-align: center;
+}
+}
+@media screen and (max-width:500px){
+    .img-container_outer{
+    }
+    .img-container_inner{
+        text-align: center;
+}
+}
