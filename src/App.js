@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./App.module.css"
 import Home from "./Pages/Home";
 import Navbar from "./components/Navbar/Navbar";
@@ -7,7 +6,6 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
 import Account from "./Pages/Account"
 import Logout from "./components/Account/Logout"
 import Login from "./components/Account/Login"
@@ -26,7 +24,6 @@ import ThankYou from "./Pages/ThankYou";
 import Error404 from "./Pages/Error404"
 
 const App = () => {
-  
   return(
     <AccountProvider>
       <CartProvider>
