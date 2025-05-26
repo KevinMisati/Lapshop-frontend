@@ -6,15 +6,17 @@ import Loader from '../Loader'
 import SingleCategory from './SingleCategory'
 
 const Categories = () => {
-    const [topSelling,setTopSelling] = useState([])
     const [isLoading,setIsLoading] = useState(true)
+    const [categories,setCategories]  = useState([])
+
     useEffect(resp => {
         apiService({
-            url:"laptops/?trending=true",
+            url:"categories",
             method:"GET",
         }).then(res => {
-            setTopSelling(res.data)
+            setCategories(res.data)
             setIsLoading(false)
+            console.log(res.data,"hello res.data")
         })
         .catch(error => {
             console.log(error)
@@ -29,11 +31,11 @@ const Categories = () => {
                 <Title title="Categories"  />
             </header>
             {!isLoading ? <main className={classes.products}>
-                {topSelling.map(product => {
+                {categories.map(category => {
                     return (
                         
                         <SingleCategory
-                            product={product}
+                            category={category}
                         /> 
                     )
                 })}

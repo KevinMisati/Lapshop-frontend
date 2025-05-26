@@ -10,7 +10,7 @@ const TopSelling = () => {
     const [isLoading,setIsLoading] = useState(true)
     useEffect(resp => {
         apiService({
-            url:"laptops/?trending=true",
+            url:"products/?trending=true",
             method:"GET",
         }).then(res => {
             setTopSelling(res.data)

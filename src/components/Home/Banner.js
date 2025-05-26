@@ -9,7 +9,7 @@ const Banner = () => {
             <div className={classes.banner}>
             <div className={classes["banner-info"]}>
                 <h1>
-                    We have all your favourite laptops
+                    We have all your favourite electronics
                 </h1>
                 <div className={classes["action-button"]}>
                     <Link to="/store">

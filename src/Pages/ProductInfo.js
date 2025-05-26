@@ -19,7 +19,7 @@ const ProductInfo = () => {
 
     useEffect(() => {
         apiService({
-            url:`laptops/${id}`,
+            url:`products/${id}`,
             method:"GET"
         }).then(res => {
             setProduct(res.data)

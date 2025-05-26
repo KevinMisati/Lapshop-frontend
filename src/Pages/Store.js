@@ -22,8 +22,8 @@ const Store = () => {
     }
 
     const getLaptops = () => {
-        let url = "laptops/"
-        if(brandFilter) url = `laptops/?brand=${brandFilter}`
+        let url = "products/"
+        if(brandFilter) url = `products/?brand=${brandFilter}`
         apiService({
             url,
             method:"GET",
