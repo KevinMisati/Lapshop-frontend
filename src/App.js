@@ -43,6 +43,7 @@ const App = () => {
           </Route>
           <Route  path="/cart" element={<Cart />} />
           <Route exact path="/store" element={<Store />} />
+          <Route exact path="/store/category/:categoryId" element={<Store />} />
           <Route exact path="/store/product/:id" element={<ProductInfo />} />
           <Route path="/checkout" element={<CheckOut />} ></Route>
           <Route path="/thankyou" element={<ThankYou />} ></Route>

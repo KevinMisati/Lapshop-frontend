@@ -1,4 +1,5 @@
-import React,{useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
 import { apiService } from '../axios'
@@ -10,6 +11,7 @@ const Store = () => {
     const [brands,setBrands]  = useState([])
     const [brandFilter,setBrandFilter] = useState("")
     const [isLoading,setIsLoading] = useState(true)
+    const {categoryId} = useParams("categoryId")
     
     const getBrands = () => {
         apiService({
@@ -23,7 +25,8 @@ const Store = () => {
 
     const getLaptops = () => {
         let url = "products/"
-        if(brandFilter) url = `products/?brand=${brandFilter}`
+        if(brandFilter) url += `?brand=${brandFilter}?catgoty=${categoryId}`
+        if(categoryId) url += `?category=${categoryId}`
         apiService({
             url,
             method:"GET",

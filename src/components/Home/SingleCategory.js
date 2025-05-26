@@ -19,7 +19,7 @@ const SingleCategory = ({category}) => {
 
                 <div id="jd" className={classes["img-container_outer"]}>
                     <div  className={classes["eye-icon"]}>
-                        <Link to={"/store/product/" + category.id}>
+                        <Link to={"/store/category/" + category.id}>
                         <i className="fas fa-eye"></i>
                         </Link>
                     </div>
@@ -31,10 +31,9 @@ const SingleCategory = ({category}) => {
                 <div className={classes["product-info"]}>
                     <div className={classes["product-name"]}>
                         <h5>
-                            <Link to={"/store/product/" + category.id}>
+                            <Link to={"/store/category/" + category.id}>
                                 {short_name}
                             </Link>
-                            
                         </h5>
                     </div>
                 </div>
