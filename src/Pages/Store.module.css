@@ -1,19 +1,17 @@
 
-.products-container{
-    display: flex;
-}
 .products{
     display: flex;
     justify-content: center;
     width: 100%;
 }
-.price-filter-container label{
-    display: block;
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+.price-filter-container{
+    display: flex;
+    justify-content: center;
 }
 .price-filter-container select{
-    border: 1px solid var(--clr-accent);
-    height: 1.35rem;
+    border: 1px solid var(--clr-accent) !important;
+    padding: .35rem;
+    border-radius: .4rem;
 }
 .price-filter-container select:focus-visible{
     border: 1px solid var(--clr-accent);

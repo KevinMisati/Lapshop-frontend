@@ -1,4 +1,3 @@
-import React from 'react'
 import classes from "./Products.module.css"
 import SingleProduct from "../Utilities/SingleProduct"
 

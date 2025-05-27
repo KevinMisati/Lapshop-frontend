@@ -25,7 +25,7 @@ const Store = () => {
 
     const getLaptops = () => {
         let url = "products/"
-        if(brandFilter) url += `?brand=${brandFilter}?catgoty=${categoryId}`
+        if(brandFilter) url += `?brand=${brandFilter}`
         if(categoryId) url += `?category=${categoryId}`
         apiService({
             url,
@@ -57,13 +57,12 @@ const Store = () => {
         <div className={classes["products-container"]}>
             {!isLoading ? <>
                 <div className={classes["price-filter-container"]}>
-                    <label for="laptop">Brands:</label>
                     <select 
                         id="laptop" 
                         name="laptop"
                         onChange={handleLaptopFiltration}
                     >
-                        <option value="">All</option>
+                        <option value="">All Brands</option>
                         {brands.map(brand => (
                             <option value={brand.id}>{brand.name}</option>
                         ))}
