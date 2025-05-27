@@ -4,55 +4,44 @@
     justify-content: center;
     width: 100%;
 }
-.price-filter-container{
+.filter-container{
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
-.price-filter-container select{
+.filter-container select{
     border: 1px solid var(--clr-accent) !important;
-    padding: .35rem;
+    padding: .45rem;
     border-radius: .4rem;
 }
-.price-filter-container select:focus-visible{
+.filter-container select:focus-visible{
     border: 1px solid var(--clr-accent);
     outline: none;
 }
-.price-filter-container option{
+.filter-container option{
     font-family: Roboto,Helvetica,Arial,sans-serif;
     height: 1rem;
 }
-.price-filter{
-    width: 100%;
-    max-width: 1144px;
+.search-input{
+    width: 20rem;
+    border: 1px solid var(--clr-accent) !important;
+    border-radius: .4rem;
+    background-color: white;
     display: flex;
-    margin: 2rem 0 -2rem 0;
-    padding: 1rem 0;
+    gap: .2rem;
+    align-items: center;
 }
-.price-filter li{
-    list-style: none;
-    border-bottom: 1px solid var(--blue-color);
+.search-input input{
+    width: 90%;
+    padding: .45rem;
+    border: none;
 }
-
-.price-filter button,
-.price-filter button:active
-{
+.search-input input:focus{
     border: none;
     outline: none;
-    background: transparent;
 }
-.price-filter button {
-    text-transform: uppercase;
-    font-size: 1rem;
-    padding: .2rem .5rem;
-    cursor: pointer;
-}
-.price-filter button:active,
-.price-filter button:visited,
-.price-filter button:focus
-
-{
-    background-color: var(--blue-color);
-    color: #fff;
+.search-input i{
+    margin-left: .5rem;
 }
 .scroll{
     position: fixed;

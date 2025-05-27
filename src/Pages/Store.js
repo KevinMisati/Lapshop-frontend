@@ -10,8 +10,10 @@ const Store = () => {
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
     const [brandFilter,setBrandFilter] = useState("")
+    const [searchTerm,setSearchTerm]  = useState("")
     const [isLoading,setIsLoading] = useState(true)
     const {categoryId} = useParams("categoryId")
+
     
     const getBrands = () => {
         apiService({
@@ -27,6 +29,7 @@ const Store = () => {
         let url = "products/"
         if(brandFilter) url += `?brand=${brandFilter}`
         if(categoryId) url += `?category=${categoryId}`
+        if(searchTerm) url += `?search=${searchTerm}`
         apiService({
             url,
             method:"GET",
@@ -40,23 +43,24 @@ const Store = () => {
         })
     }
 
+    const handleLaptopFiltration = (e) => {
+        setBrandFilter(e.target.value)
+    }
+
     useEffect(() => {
         getBrands()
     }, []) 
 
     useEffect(() => {
         getLaptops()
-    }, [brandFilter]) 
+    }, [brandFilter,searchTerm]) 
 
-    const handleLaptopFiltration = (e) => {
-        setBrandFilter(e.target.value)
-    }
 
     return (
         
         <div className={classes["products-container"]}>
             {!isLoading ? <>
-                <div className={classes["price-filter-container"]}>
+                <div className={classes["filter-container"]}>
                     <select 
                         id="laptop" 
                         name="laptop"
@@ -67,6 +71,14 @@ const Store = () => {
                             <option value={brand.id}>{brand.name}</option>
                         ))}
                     </select>
+                    
+                    <div className={classes["search-input"]}>
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        <input 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>
                 </div>
                 <div className={classes.products}>
                     <Products products={filteredProducts} />
