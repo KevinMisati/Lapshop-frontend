@@ -16,6 +16,9 @@
     --red-color:#ff5063;
     --transition:.5s all;
 }
+:global {
+    @import 'node_modules/slick-carousel/slick/slick';
+}
 body,
 *{
     margin:0;

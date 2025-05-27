@@ -4,6 +4,10 @@ import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
 import { apiService } from '../../axios'
 import Loader from '../Loader'
+import Slider from "react-slick";
+import { useWindowWidth } from '../Utilities/useWindowWidth'
+import { getSliderSettings } from '../Utilities/helpers'
+
 
 const TopSelling = () => {
     const [topSelling,setTopSelling] = useState([])
@@ -21,6 +25,8 @@ const TopSelling = () => {
             setIsLoading(false)
         })
     },[]) 
+    const screenWidth = useWindowWidth()
+    const settings = getSliderSettings(screenWidth)
 
     return (
         <div className={classes["top-selling_container"]}>
@@ -28,15 +34,17 @@ const TopSelling = () => {
             <header className={classes["top-selling_header"]}>
                 <Title title="Trending products"  />
             </header>
-            {!isLoading ? <main className={classes.products}>
-                {topSelling.map(product => {
-                    return (
-                        
-                        <SingleProduct 
-                            product={product}
-                        /> 
-                    )
-                })}
+            {!isLoading ? <main /* className={classes.products} */>
+                <Slider {...settings}>
+                    {topSelling.map(product => {
+                        return (
+                            
+                            <SingleProduct 
+                                product={product}
+                            /> 
+                        )
+                    })}
+                </Slider>
             </main> : 
                 <Loader height="100%" />
             }
