@@ -16,7 +16,7 @@ const Categories = () => {
         }).then(res => {
             setCategories(res.data)
             setIsLoading(false)
-            console.log(res.data,"hello res.data")
+            localStorage.setItem("categories",JSON.stringify(res.data))
         })
         .catch(error => {
             console.log(error)

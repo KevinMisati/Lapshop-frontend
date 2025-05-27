@@ -5,16 +5,32 @@ import Products from '../components/Store/Products'
 import { apiService } from '../axios'
 import Loader from '../components/Loader'
 
-
 const Store = () => {
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
     const [brandFilter,setBrandFilter] = useState("")
     const [searchTerm,setSearchTerm]  = useState("")
     const [isLoading,setIsLoading] = useState(true)
-    const {categoryId} = useParams("categoryId")
 
-    
+    const [categoryFilter,setCategoryFilter] = useState(useParams("categoryId"))
+    const [categories,setCategories]  = useState(localStorage.getItem("categories") ? JSON.parse(localStorage.getItem("categories")) : [])
+
+    const getCategories = () => {
+        apiService({
+            url:"categories",
+            method:"GET",
+        }).then(res => {
+            let categories = res.data
+            setCategories(categories)
+            setIsLoading(false)
+            localStorage.setItem("categories",JSON.stringify(res.data))
+        })
+        .catch(error => {
+            console.log(error)
+            setIsLoading(false)
+        })
+    }
+
     const getBrands = () => {
         apiService({
             url:"brands/",
@@ -27,9 +43,10 @@ const Store = () => {
 
     const getLaptops = () => {
         let url = "products/"
-        if(brandFilter) url += `?brand=${brandFilter}`
-        if(categoryId) url += `?category=${categoryId}`
-        if(searchTerm) url += `?search=${searchTerm}`
+        if(brandFilter || categoryFilter || searchTerm) url += "?"
+        if(brandFilter) url += `brand=${brandFilter}&`
+        if(categoryFilter) url += `category=${categoryFilter}&`
+        if(searchTerm) url += `search=${searchTerm}`
         apiService({
             url,
             method:"GET",
@@ -44,16 +61,19 @@ const Store = () => {
     }
 
     const handleLaptopFiltration = (e) => {
-        setBrandFilter(e.target.value)
+        const {name,value} = e.target
+        if(name === "brands") setBrandFilter(value)
+        else setCategoryFilter(value)
     }
 
     useEffect(() => {
         getBrands()
+        categories.length === 0 && getCategories()
     }, []) 
 
     useEffect(() => {
         getLaptops()
-    }, [brandFilter,searchTerm]) 
+    }, [brandFilter,searchTerm,categoryFilter]) 
 
 
     return (
@@ -63,7 +83,18 @@ const Store = () => {
                 <div className={classes["filter-container"]}>
                     <select 
                         id="laptop" 
-                        name="laptop"
+                        name="categories"
+                        onChange={handleLaptopFiltration}
+                    >
+                        <option value="">All Categories</option>
+                        {categories.map(category => (
+                            <option value={category.id}>{category.name}</option>
+                        ))}
+                    </select>
+
+                    <select 
+                        id="laptop" 
+                        name="brands"
                         onChange={handleLaptopFiltration}
                     >
                         <option value="">All Brands</option>
