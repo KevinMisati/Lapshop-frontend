@@ -1,18 +1,20 @@
 import {useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
 import { apiService } from '../axios'
 import Loader from '../components/Loader'
+import nodata from '../../src/images/nodata.png'
 
 const Store = () => {
+    const location = useLocation()
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
     const [brandFilter,setBrandFilter] = useState("")
     const [searchTerm,setSearchTerm]  = useState("")
     const [isLoading,setIsLoading] = useState(true)
 
-    const [categoryFilter,setCategoryFilter] = useState(useParams("categoryId"))
+    const [categoryFilter,setCategoryFilter] = useState(location?.state?.categoryId)
     const [categories,setCategories]  = useState(localStorage.getItem("categories") ? JSON.parse(localStorage.getItem("categories")) : [])
 
     const getCategories = () => {
@@ -79,12 +81,14 @@ const Store = () => {
     return (
         
         <div className={classes["products-container"]}>
-            {!isLoading ? <>
+            {!isLoading ? 
+            <div>
                 <div className={classes["filter-container"]}>
                     <select 
                         id="laptop" 
                         name="categories"
                         onChange={handleLaptopFiltration}
+                        value={categoryFilter}
                     >
                         <option value="">All Categories</option>
                         {categories.map(category => (
@@ -96,6 +100,7 @@ const Store = () => {
                         id="laptop" 
                         name="brands"
                         onChange={handleLaptopFiltration}
+                        value={brandFilter}
                     >
                         <option value="">All Brands</option>
                         {brands.map(brand => (
@@ -111,10 +116,28 @@ const Store = () => {
                         />
                     </div>
                 </div>
-                <div className={classes.products}>
-                    <Products products={filteredProducts} />
-                </div>
-            </> : 
+                {
+                    filteredProducts.length > 0 ?  
+                        <div className={classes.products}>
+                            <Products products={filteredProducts} />
+                        </div> : 
+                        <div className={classes["nodata-container"]}>
+                            <div className={classes["nodata-container-img"]} >
+                                <img alt='No data found' src={nodata} />
+                            </div> 
+                            <div className={classes["nodata-container-text"]}>
+                                <h2 className="text-xl font-semibold mb-2">
+                                    Hmm... looks like we don’t have that yet.
+                                </h2>
+                                <p className="text-gray-600">
+                                    Need help? Contact us and we’ll be glad to assist you.
+                                </p>
+                            </div>
+                        </div> 
+
+                }
+            </div> 
+            :
             <Loader height="calc(100vh - 70px)" /> }
         </div>
     )

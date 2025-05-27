@@ -1,8 +1,8 @@
 import classes from "./SingleCategory.module.css"
-import { Link} from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
 
 const SingleCategory = ({category}) => {
+    const navigate = useNavigate()
     const shorten_name = (name) => {
         const name_arr = name.split(" ")
         const short_name_arr = name_arr.splice(0,3)
@@ -10,18 +10,22 @@ const SingleCategory = ({category}) => {
         return short_name
     }
     const short_name = shorten_name(category.name)
+
+    const handleRedirect = () => {
+        navigate("/store",{state:{categoryId: category.id}})
+    }
     
     return (
         <>
-        <div className={classes["single-product_container"]}>
+        <div onClick={handleRedirect} className={classes["single-product_container"]}>
             <div className={classes["single-product"]}>
                 <div className={classes.product}>
 
                 <div id="jd" className={classes["img-container_outer"]}>
                     <div  className={classes["eye-icon"]}>
-                        <Link to={"/store/category/" + category.id}>
+                        <button onClick={handleRedirect} >
                         <i className="fas fa-eye"></i>
-                        </Link>
+                        </button>
                     </div>
                     <div className={classes.overlay}></div>
                 <div className={classes["img-container_inner"]}>
@@ -30,10 +34,8 @@ const SingleCategory = ({category}) => {
                 </div>
                 <div className={classes["product-info"]}>
                     <div className={classes["product-name"]}>
-                        <h5>
-                            <Link to={"/store/category/" + category.id}>
-                                {short_name}
-                            </Link>
+                        <h5 onClick={handleRedirect}>
+                            {short_name}
                         </h5>
                     </div>
                 </div>
