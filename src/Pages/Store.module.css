@@ -8,11 +8,13 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 .filter-container select{
     border: 1px solid var(--clr-accent) !important;
     padding: .45rem;
     border-radius: .4rem;
+    
 }
 .filter-container select:focus-visible{
     border: 1px solid var(--clr-accent);
