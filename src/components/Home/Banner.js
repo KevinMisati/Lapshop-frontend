@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from "./Banner.module.css"
-import Button from "../Utilities/Button"
 import {Link} from "react-router-dom"
 
 const Banner = () => {
@@ -22,7 +21,6 @@ const Banner = () => {
                 </div>
                 
             </div>
-            
         </div>
     )
 }
