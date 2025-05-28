@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import {useEffect,useState} from 'react'
 import classes from "./TopSelling.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
@@ -34,7 +34,7 @@ const TopSelling = () => {
             <header className={classes["top-selling_header"]}>
                 <Title title="Trending products"  />
             </header>
-            {!isLoading ? <main /* className={classes.products} */>
+            {!isLoading ? <main className={classes.products} >
                 <Slider {...settings}>
                     {topSelling.map(product => {
                         return (

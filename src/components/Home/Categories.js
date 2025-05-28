@@ -36,7 +36,7 @@ const Categories = () => {
             <header className={classes["top-selling_header"]}>
                 <Title title="Categories"  />
             </header>
-            {!isLoading ? <main >
+            {!isLoading ? <main className={classes.products}>
                 <Slider {...settings}>
                     {categories.map(category => {
                         return (
