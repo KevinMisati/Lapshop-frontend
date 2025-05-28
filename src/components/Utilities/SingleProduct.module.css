@@ -59,12 +59,10 @@
 .img-container_inner{
     width:225px !important;
     height: 220px;
-    
-
     display: flex;
-  justify-content: center;   /* horizontal alignment */
-  align-items: center;       /* vertical alignment */
-  overflow: hidden;
+    justify-content: center;   /* horizontal alignment */
+    align-items: center;       /* vertical alignment */
+    overflow: hidden;
 }
 .img-container_inner img{
     max-width:100%;
@@ -111,9 +109,8 @@ transition: .5s all;
 }
 }
 @media screen and (max-width:500px){
-    .img-container_outer{
-    }
     .img-container_inner{
-        text-align: center;
-}
+        width:175px !important;
+        height: 190px;
+    }
 }
