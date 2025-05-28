@@ -4,10 +4,16 @@ import Title from '../Utilities/Title'
 import { apiService } from '../../axios'
 import Loader from '../Loader'
 import SingleCategory from './SingleCategory'
+import Slider from 'react-slick'
+import { useWindowWidth } from '../Utilities/useWindowWidth'
+import { getSliderSettings } from '../Utilities/helpers'
 
 const Categories = () => {
     const [isLoading,setIsLoading] = useState(true)
     const [categories,setCategories]  = useState([])
+
+    const screenWidth = useWindowWidth()
+    const settings = getSliderSettings(screenWidth)
 
     useEffect(resp => {
         apiService({
@@ -30,15 +36,17 @@ const Categories = () => {
             <header className={classes["top-selling_header"]}>
                 <Title title="Categories"  />
             </header>
-            {!isLoading ? <main className={classes.products}>
-                {categories.map(category => {
-                    return (
-                        
-                        <SingleCategory
-                            category={category}
-                        /> 
-                    )
-                })}
+            {!isLoading ? <main >
+                <Slider {...settings}>
+                    {categories.map(category => {
+                        return (
+                            
+                            <SingleCategory
+                                category={category}
+                            /> 
+                        )
+                    })}
+                </Slider>
             </main> : 
                 <Loader height="100%" />
             }

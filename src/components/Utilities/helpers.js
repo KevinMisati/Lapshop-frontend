@@ -6,7 +6,6 @@ export const getSliderSettings = (width) => {
     else if(width < 1000) slides = 3
     else slides = 4
     let settings = {
-        dots: true,
         infinite: true,
         speed: 500,
         slidesToScroll: 1,
