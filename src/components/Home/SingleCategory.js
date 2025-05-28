@@ -1,5 +1,5 @@
 import classes from "./SingleCategory.module.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SingleCategory = ({category}) => {
     const navigate = useNavigate()
@@ -24,7 +24,7 @@ const SingleCategory = ({category}) => {
                 <div id="jd" className={classes["img-container_outer"]}>
                     <div  className={classes["eye-icon"]}>
                         <button onClick={handleRedirect} >
-                        <i className="fas fa-eye"></i>
+                            <i className="fas fa-eye"></i>
                         </button>
                     </div>
                     <div className={classes.overlay}></div>

@@ -28,8 +28,11 @@
     z-index: 20;
     transition: .5s all;
 }
-.eye-icon a {
+.eye-icon button {
     color: inherit;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 .eye-icon:hover{
     background-color: #ff5063;
