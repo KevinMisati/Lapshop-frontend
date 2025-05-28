@@ -12,7 +12,6 @@ import Login from "./components/Account/Login"
 import SignUp from "./components/Account/SignUp"
 import ResetPassword from "./components/Account/ResetPassword";
 import NewPassword from "./components/Account/NewPassword";
-
 import Cart from "./Pages/Cart"
 import Store from "./Pages/Store"
 import ProductInfo from "./Pages/ProductInfo";
@@ -22,12 +21,16 @@ import CheckOut from "./Pages/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";
 import ThankYou from "./Pages/ThankYou";
 import Error404 from "./Pages/Error404"
+import ShopAd from "./components/shopAd/index"
+import { useLocation } from "react-router-dom";
 
 const App = () => {
+  const location = useLocation()
   return(
     <AccountProvider>
       <CartProvider>
       <div className={classes.app}>
+        {location.pathname === "/" ? <ShopAd /> : ""}
         <Navbar />
         <ScrollToTop />
         <Routes>
