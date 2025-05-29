@@ -1,5 +1,4 @@
-import React from 'react'
-import classes from "./Banner.module.css"
+import classes from "./home.module.css"
 import {Link} from "react-router-dom"
 
 const Banner = () => {

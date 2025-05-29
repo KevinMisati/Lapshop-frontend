@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react'
-import classes from "./TopSelling.module.css"
+import classes from "./home.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
 import { apiService } from '../../axios'

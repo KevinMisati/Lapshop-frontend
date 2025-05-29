@@ -10,6 +10,7 @@ const Home = () => {
           <Trending />
           <Categories />
           <MostLoved />
+          
         </>
     )
 }
