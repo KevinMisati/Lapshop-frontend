@@ -2,9 +2,10 @@ import React,{useState,useEffect,useContext} from 'react'
 import classes from "./ProductInfo.module.css"
 import {useParams} from "react-router-dom"
 import AddToCartButton from '../components/Utilities/AddToCartButton'
-import { CartContext } from '../Context'
-import { apiService } from '../axios'
-import Loader from '../components/Loader'
+import { CartContext } from '../../src/Context'
+import { apiService } from '../axios/index'
+import Loader from '../../src/components/Loader'
+import SimilarProducts from '../components/ProductInfo/SimilarProducts'
 
 const ProductInfo = () => {
     const [product,setProduct] = useState({})
@@ -38,14 +39,14 @@ const ProductInfo = () => {
         
             <div className={classes["product-info-container"]}>
                 {!isLoading ?
-                    <div className={classes["product-info"]}>
+                    <><div className={classes["product-info"]}>
                         <div className={classes["img-container"]}>
                             <img alt={product.model_name} src={product.image} />
                         </div>
                         <div className={classes["product-desc"]}>
                             <h2>{product.model_name}</h2>
                             <p className={classes.info}>{product.description}</p>
-                            <p className={classes.info}>$ {product.price}</p>
+                            <p className={classes.info}>KSH {product.price}</p>
                             <div className={classes["add-btn"]} onClick={handleItemIncrement}>
                                 <AddToCartButton
                                     color="#555"
@@ -54,7 +55,8 @@ const ProductInfo = () => {
                             </div>
                             
                         </div>
-                    </div> :
+                        
+                    </div> <SimilarProducts product={product} /></>:
                 
                 <Loader />
                 }

@@ -21,7 +21,7 @@ import CheckOut from "./Pages/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";
 import ThankYou from "./Pages/ThankYou";
 import Error404 from "./Pages/Error404"
-import ShopAd from "./components/shopAd/index"
+import ShopAd from "./components/Home/ShopAd"
 import { useLocation } from "react-router-dom";
 
 const App = () => {
