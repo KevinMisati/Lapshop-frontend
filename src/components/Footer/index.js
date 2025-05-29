@@ -3,7 +3,8 @@ const Footer = () => {
     return (
         
       <div className={classes["footer-container"]}>
-        Built with&nbsp; <span style={{color:"red"}}>♡</span>&nbsp;by&nbsp; <a>Kevin</a>
+        Built with&nbsp; <span style={{color:"red"}}>♡</span>&nbsp;by&nbsp; 
+        <a target="blank" href="https://kevinmisati.netlify.app/">Kevin</a>
       </div> 
     )
 }
