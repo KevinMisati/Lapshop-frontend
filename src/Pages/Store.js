@@ -10,7 +10,7 @@ const Store = () => {
     const location = useLocation()
     const [filteredProducts,setFilteredProducts] = useState([])
     const [brands,setBrands]  = useState([])
-    const [brandFilter,setBrandFilter] = useState("")
+    const [brandFilter,setBrandFilter] = useState(location?.state?.brandId)
     const [searchTerm,setSearchTerm]  = useState("")
     const [isLoading,setIsLoading] = useState(true)
 
