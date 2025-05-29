@@ -56,7 +56,8 @@ const ProductInfo = () => {
                             
                         </div>
                         
-                    </div> <SimilarProducts product={product} /></>:
+                    </div> <SimilarProducts product={product} />
+                    </>:
                 
                 <Loader />
                 }

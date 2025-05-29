@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Maven+Pro:wght@400;500;700&family=Montserrat&family=Roboto:wght@400;700&family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap');
 .product-info-container{
     background-color: var(--gray-color);
-    /* min-height: 100vh; */
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +15,7 @@
     max-width: 1140px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 .img-container{
     background: #fff;
