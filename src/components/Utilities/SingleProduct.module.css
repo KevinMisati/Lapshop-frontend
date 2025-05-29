@@ -130,3 +130,17 @@
     margin:.1rem;
 }
 }
+
+@media screen and (max-width:400px){
+    .img-container_inner{
+        width:160px !important;
+        height: 190px;
+    }
+    .product-name a,
+.product-name h5{
+    font-size: .85rem;
+}
+.single-product{
+    margin:.1rem;
+}
+}

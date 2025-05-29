@@ -18,7 +18,7 @@ const SingleProduct = ({product}) => {
         const name_arr = name.split(" ")
         if(name_arr.length > 2){
             let short_name_arr 
-            if(screenWidth < 400) short_name_arr = name_arr.splice(0,1)
+            if(screenWidth < 400) short_name_arr = name_arr.splice(0,2)
             else if(screenWidth < 500) short_name_arr = name_arr.splice(0,2)
             else short_name_arr = name_arr.splice(0,3)
             const short_name = short_name_arr.join(" ") + "..."
