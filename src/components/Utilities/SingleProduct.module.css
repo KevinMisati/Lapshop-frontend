@@ -76,12 +76,12 @@
     margin: .5rem auto;
 }
 .product-name a{
-line-height: 1.1;
-font-size: 1.2rem;
-color: var(--red-color);
-text-decoration: none;
-font-weight: 700;
-transition: .5s all;
+    line-height: 1.1;
+    font-size: 1.2rem;
+    color: var(--red-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: .5s all;
 }
 .product-name a:hover{
     color:#3C43A4 ;
@@ -107,10 +107,16 @@ transition: .5s all;
 .img-container_inner{
     text-align: center;
 }
+.product-name a{
+    font-size: 1rem;
+}
 }
 @media screen and (max-width:500px){
     .img-container_inner{
         width:175px !important;
         height: 190px;
     }
+    .product-name a{
+    font-size: .9rem;
+}
 }
