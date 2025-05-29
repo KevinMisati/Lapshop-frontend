@@ -110,6 +110,9 @@
 .product-name a{
     font-size: 1rem;
 }
+.single-product{
+    margin:.2rem;
+}
 }
 @media screen and (max-width:500px){
     .img-container_inner{
@@ -118,5 +121,8 @@
     }
     .product-name a{
     font-size: .9rem;
+}
+.single-product{
+    margin:.1rem;
 }
 }
