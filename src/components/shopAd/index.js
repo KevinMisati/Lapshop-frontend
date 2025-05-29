@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import shopAd from "../../../src/images/shop.gif"
 import sale from "../../../src/images/sale.gif"
+import bigSale from "../../../src/images/big-sale-3979_256.gif"
 import classes from "./shopAd.module.css"
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
             <div>
                 <img src={shopAd} alt='Shopping Ad' />
                 <img src={sale} alt='Shopping Ad' />
+                <img src={bigSale} alt='Shopping Ad' />
             </div>
         </div>
     )
