@@ -34,7 +34,7 @@ const Brands = () => {
                 <Title title="Shop by brands" />
                 <div className={classes["brands-grid"]}>
                     {
-                        brands.map(brand => (
+                        brands.filter(brand => (brand.name !== "Others" && brand.name !== "Accessories")).map(brand => (
                             <div onClick={() => handleRedirect(brand)} className={classes["brand-card"]}>
                                 <img alt={brand.name} src={brand.image} />
                             </div>

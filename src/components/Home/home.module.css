@@ -215,6 +215,7 @@ cursor: pointer;
   flex-wrap: wrap;
   gap: .5rem;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .brand-card {
