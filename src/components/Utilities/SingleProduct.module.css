@@ -108,7 +108,8 @@
 }
 .discount{
     position: absolute;
-    left: 83%;
+    top: 0%;
+    right: 0%;
     font-size: .875rem;
     min-height: 24px;
     padding-right: 4px;
