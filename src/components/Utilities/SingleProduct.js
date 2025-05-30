@@ -28,39 +28,54 @@ const SingleProduct = ({product}) => {
         
     }
     const short_name = shorten_name(product.model_name)
+    const discount = Math.floor(((product.old_price - product.price) / product.old_price) * 100)
     
     return (
         <>
         <div className={classes["single-product_container"]}>
             <div className={classes["single-product"]}>
                 <div className={classes.product}>
-
-                <div id="jd" className={classes["img-container_outer"]}>
-                    <div  className={classes["eye-icon"]}>
-                        <Link to={"/store/product/" + product.id}>
-                        <i className="fas fa-eye"></i>
-                        </Link>
-                    </div>
-                    <div className={classes.overlay}></div>
-                <div className={classes["img-container_inner"]}>
-                    <img alt={product.name} src={product.image}></img>
-                </div>
-                </div>
-                <div className={classes["product-info"]}>
-                    <div className={classes["product-name"]}>
-                        <h5>
+                    {discount > 5 ? 
+                        <div className={classes["discount"]}>
+                            <p>-{discount}%</p>
+                        </div> : ""
+                    }
+                    <div id="jd" className={classes["img-container_outer"]}>
+                        <div  className={classes["eye-icon"]}>
                             <Link to={"/store/product/" + product.id}>
-                                {short_name}
+                            <i className="fas fa-eye"></i>
                             </Link>
+                        </div>
+                        <div className={classes.overlay}></div>
+                    <div className={classes["img-container_inner"]}>
+                        <img alt={product.name} src={product.image}></img>
+                    </div>
+                    </div>
+                    <div className={classes["product-info"]}>
+                        <div className={classes["product-name"]}>
+                            <h5>
+                                <Link to={"/store/product/" + product.id}>
+                                    {short_name}
+                                </Link>
+                                
+                            </h5>
+                        </div>
+
+                        < div className={classes["product-price"]}>
+                            {product.price < product.old_price ?
+                                <p className={classes["product-price-old"]}>KSH {product.old_price}</p> 
+                                : ""
+                            }
+                                <p className={classes["product-price-new"]}>KSH {product.price}</p>
+                                
                             
-                        </h5>
+                        </div>
+                        
+                        <div onClick={handleItemIncrement} className={classes["add-to-cart"]}>
+                            <Button  text="add to cart" />
+                        </div>
                     </div>
-                    
-                    <div onClick={handleItemIncrement} className={classes["add-to-cart"]}>
-                        <Button  text="add to cart" />
                     </div>
-                </div>
-                </div>
             </div>
         </div>
         </>
