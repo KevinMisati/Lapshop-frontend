@@ -62,10 +62,10 @@ const SingleProduct = ({product}) => {
                         </div>
 
                         < div className={classes["product-price"]}>
-                            {/* {product.price < product.old_price ?
+                            {screenWidth > 500 && product.price < product.old_price ?
                                 <p className={classes["product-price-old"]}>KSH {product.old_price}</p> 
                                 : ""
-                            } */}
+                            } 
                                 <p className={classes["product-price-new"]}>KSH {product.price}</p>
                                 
                             
