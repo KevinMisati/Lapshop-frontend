@@ -1,5 +1,5 @@
-import React,{useState,useContext} from 'react'
-import { useNavigate } from 'react-router-dom';
+import {useState,useContext} from 'react'
+import { useNavigate,useLocation } from 'react-router-dom';
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
 import { apiService } from '../../axios';
@@ -8,6 +8,8 @@ import Snackbar from '../Snackbar';
 
 const Login = () => {
     const navigate = useNavigate()
+    const location = useLocation()
+    const nextPage = location?.state?.nextPage
     const [errMessage,setErrMessage] = useState("")
     const [successMessage,setSuccessMessage] = useState("")
     const [form,setForm] = useState({
@@ -30,7 +32,8 @@ const Login = () => {
                 setSuccessMessage("Logged in successfully")
                 setShowSnackbar(true)
                 setTimeout(() => {
-                    navigate("/")
+                    if(nextPage) navigate(`/${nextPage}`)
+                    else navigate("/")
                 },2000)
             }).catch(error => {
                 console.log(error)

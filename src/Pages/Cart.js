@@ -1,4 +1,4 @@
-import React,{useContext,useEffect} from 'react'
+import {useContext} from 'react'
 import classes from "./Cart.module.css"
 import SingleProduct from '../components/Cart/SingleProduct'
 import CheckOutButton from '../components/Cart/CheckOut'
@@ -8,9 +8,6 @@ import Button from '../components/Utilities/Button'
 
 const Cart = () => {
     const { products_in_cart,number_of_items} = useContext(CartContext)
-    useEffect(() => {
-        console.log(products_in_cart)
-    },[])
     return (
         <div className={classes["cart-container"]}>
             

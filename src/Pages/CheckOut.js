@@ -54,7 +54,7 @@ const CheckOut = () => {
                         <div className={classes["pickup-stores"]}>
                             <div className={classes["input-control"]}>
                                 <input type='radio' name="lapshop_stores" />
-                                <label>Lapshop stores, Kakamega</label>
+                                <label>Lapshop stores, Kisii</label>
                             </div>
                         </div>
                     </div>

@@ -1,11 +1,24 @@
-import React,{useContext} from 'react'
-import { Link } from 'react-router-dom'
+import {useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../../Context'
+import { AccountContext } from '../../AccountContext'
 import classes from "./CheckOut.module.css"
 
 const CheckOutButton = () => {
+    const navigate = useNavigate()
     let {sub_total} = useContext(CartContext)
+    let { userDetails } = useContext(AccountContext)
     sub_total = sub_total.toFixed(2)
+
+    const handleCheckingOut = (e) => {
+        e.preventDefault()
+        if(userDetails.user_id){
+            navigate("/checkout")
+        }
+        else{
+            navigate("/account/login",{state:{nextPage:"checkout"}})
+        }
+    }
     
     return (
         <div className={classes["checkout-container"]}>
@@ -29,7 +42,7 @@ const CheckOutButton = () => {
 
             </div>
             <div className={classes["checkout-btn"]}>
-                <Link to="/checkout">checkout</Link>
+                <button onClick={handleCheckingOut} >checkout</button>
             </div>
         </div>
     )

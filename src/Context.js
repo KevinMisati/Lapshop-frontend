@@ -20,7 +20,6 @@ const CartProvider = ({children}) => {
     const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
 
     useEffect(()=> {
-        console.log(cartState,"hello cart state")
         localStorage.setItem('cartState',JSON.stringify(cartState))
     },[cartState])
 

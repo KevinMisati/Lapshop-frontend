@@ -26,7 +26,7 @@
     padding: 1rem 0;
     font-weight: 600;
 }
-.checkout-btn a{
+.checkout-btn button{
     display: block;
     text-align: center;
     width: 100%;
