@@ -16,6 +16,7 @@ const Login = () => {
         email:"",
         password:"",
     })
+    const [showPassword,setShowPassword] = useState(false)
     const [showSnackbar, setShowSnackbar] = useState(false);
 
     const {loginUser} = useContext(AccountContext)
@@ -69,7 +70,22 @@ const Login = () => {
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>password</label>
-                        <input required={true} onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
+                        <div>
+                            <input 
+                                required={true} 
+                                onChange={handleFormChange} 
+                                id='password' 
+                                type={showPassword ?  "text" : 'password' }
+                                name='password' 
+                                value={form.password} 
+                            />
+                            <i 
+                                onClick={() => setShowPassword(prev => !prev)}
+                                class={showPassword ? "fa fa-eye-slash" :"fa fa-eye" } 
+                                aria-hidden="true"
+                            >
+                            </i>
+                        </div>
                     </div>
 
                     {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}

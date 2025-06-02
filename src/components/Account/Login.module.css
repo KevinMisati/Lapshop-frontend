@@ -13,6 +13,10 @@
 .input-control{
     display: flex;
     flex-direction: column;
+    width: 300px;
+}
+.input-control>div{
+    display: flex;
 }
 .input-control label{
     text-transform: capitalize;
@@ -24,7 +28,7 @@
     border: none;
     padding: .3rem;
     font-size: 1.1rem;
-    width: 300px;
+    flex: 1;
     background-color: transparent;
     border-bottom:1px solid black;
 }
@@ -36,6 +40,12 @@
     width: 300px;
     background-color: transparent;
     border-bottom:1px solid black;
+}
+.input-control i{
+    padding: .4rem;
+    font-size: 1.1rem;
+    border-bottom:1px solid black;
+    cursor: pointer;
 }
 .signin-btn{
     margin: 1.5rem 0;

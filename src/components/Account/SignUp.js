@@ -14,6 +14,7 @@ const SignUp = () => {
         password:"",
     })
     const [showSnackbar, setShowSnackbar] = useState(false);
+    const [showPassword,setShowPassword] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -55,7 +56,21 @@ const SignUp = () => {
                     
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>passowd</label>
-                        <input onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
+                        <div>
+                            <input 
+                                onChange={handleFormChange} 
+                                id='password' 
+                                type={showPassword ?  "text" : 'password' }
+                                name='password' 
+                                value={form.password} 
+                            />
+                            <i 
+                                onClick={() => setShowPassword(prev => !prev)}
+                                class={showPassword ? "fa fa-eye-slash" :"fa fa-eye" } 
+                                aria-hidden="true"
+                            >
+                            </i>
+                        </div>
                     </div>
                     <div className={classes["input-control"]}>
                         <button onClick={handleSubmit} className={classes["register-btn"]}>create account</button>

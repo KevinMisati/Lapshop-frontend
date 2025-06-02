@@ -16,6 +16,8 @@ const NewPassword = () => {
         confirmPassword:"",
     })
     const [showSnackbar, setShowSnackbar] = useState(false);
+    const [showPassword,setShowPassword] = useState(false)
+    const [showConfirmPassword,setShowConfirmPassword] = useState(false)
 
     const {loginUser} = useContext(AccountContext)
 
@@ -63,12 +65,44 @@ const NewPassword = () => {
                 <form>
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>password</label>
-                        <input required={true} onChange={handleFormChange} id='password' type='password' name='password' value={form.password} />
+                        <div>
+                            <input 
+                                required={true} 
+                                onChange={handleFormChange} 
+                                type={showPassword ? "text" : 'password' }
+                                id='password' 
+                                name='password' 
+                                value=
+                                {form.password} 
+                            />
+                            <i 
+                                onClick={() => setShowPassword(prev => !prev)}
+                                class={showPassword ? "fa fa-eye-slash" :  "fa fa-eye" } 
+                                aria-hidden="true"
+                            >
+                            </i>
+                        </div>
                     </div>
 
                     <div className={classes["input-control"]}>
                         <label htmlFor='confirmPassword'>confirm password</label>
-                        <input required={true} onChange={handleFormChange} id='confirmPassword' type='password' name='confirmPassword' value={form.confirmPassword} />
+                        <div>
+                            <input 
+                                required={true} 
+                                onChange={handleFormChange} 
+                                type={showConfirmPassword ?  "text" : 'password' }
+                                id='confirmPassword' 
+                                name='confirmPassword' 
+                                value={form.confirmPassword} 
+                            />
+                            <i 
+                                onClick={() => setShowConfirmPassword(prev => !prev)}
+                                class={showConfirmPassword ? "fa fa-eye-slash" :  "fa fa-eye" } 
+                                aria-hidden="true"
+                            >
+                            </i>
+                        </div>
+                        
                     </div>
 
                     {errMessage && <p className={classes["err-message"]}>{errMessage}</p>}
