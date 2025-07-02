@@ -2,27 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0;
+    padding: .35rem 0;
 }
 .title_container h3{
     text-transform: capitalize;
-    font-size:2rem;
+    font-size:1rem;
     color: #212121;
     font-family: 'Glegoo', serif;
 }
-@media screen and (max-width:600px){
+
+@media screen and (min-width:600px){
     .title_container{
-        padding: .5rem 0;
+        padding: 1rem 0;
     }
     .title_container h3{
-        font-size:1.75rem;
-    }
-}
-@media screen and (max-width:500px){
-    .title_container{
-        padding: .35rem 0;
-    }  
-    .title_container h3{
-        font-size:1.5rem;
+        font-size:1.2rem;
     }
 }
