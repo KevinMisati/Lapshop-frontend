@@ -10,7 +10,7 @@ const CartLink = () => {
         <div className={classes["cart-container"]}>
             <div className={classes["cart"]}>
                 <Link className={classes["nav-link"]} to="/cart">
-                    <i className="fas fa-shopping-bag"></i>
+                    <i class="fas fa-shopping-bag"></i>
                 </Link>
             </div>
             <div className={classes["quantity"]}>

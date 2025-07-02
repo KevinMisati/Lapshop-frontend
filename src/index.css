@@ -38,8 +38,3 @@ body,
     height: auto !important;
     background-color: var(--gray-color);
 }
-h2,
-h3,
-h1{
-    color:var(--clr-dark);
-}

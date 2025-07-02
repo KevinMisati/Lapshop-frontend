@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import {useContext} from 'react'
 import classes from './Header.module.css'
 import CartLink from './CartLink'
 import { Link }  from 'react-router-dom'
@@ -13,7 +13,6 @@ const Header = ({isUserLoggedIn}) => {
 
             <div className={classes["logo-and-store-links-container"]}>
                 <div className={classes.logo}>
-                   
                     <h3>
                         <Link className={classes["nav-link"]} to="/">LapShop</Link>
                     </h3>
