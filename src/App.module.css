@@ -3,13 +3,13 @@
     justify-content: stretch !important;
     width:100vw;
     height: 100vh;
-    background-color: var(--clr-body);
 }
 h1,
 h2,
 h3{
     font-family: 'Glegoo', serif;
 }
+
 .app{
-    background-color: var(--clr-body);
+    @apply bg-brand-bodyBg;
 }

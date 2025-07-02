@@ -1,6 +1,7 @@
 //import classes from "./SingleCategory.module.css"
 import classes from "../Utilities/SingleProduct.module.css"
 import { useNavigate } from 'react-router-dom'
+import { FaEye } from 'react-icons/fa';
 
 const SingleCategory = ({category}) => {
     const navigate = useNavigate()
@@ -25,7 +26,7 @@ const SingleCategory = ({category}) => {
                 <div id="jd" className={classes["img-container_outer"]}>
                     <div  className={classes["eye-icon"]}>
                         <button onClick={handleRedirect} >
-                            <i className="fas fa-eye"></i>
+                            <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
                         </button>
                     </div>
                     <div className={classes.overlay}></div>

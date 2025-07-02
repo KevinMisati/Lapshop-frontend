@@ -4,6 +4,7 @@ import Button from './Button'
 import { Link} from 'react-router-dom'
 import { CartContext } from "../../Context"
 import { useWindowWidth } from './useWindowWidth'
+import { FaEye } from 'react-icons/fa';
 
 
 const SingleProduct = ({product}) => {
@@ -43,7 +44,7 @@ const SingleProduct = ({product}) => {
                     <div id="jd" className={classes["img-container_outer"]}>
                         <div  className={classes["eye-icon"]}>
                             <Link to={"/store/product/" + product.id}>
-                            <i className="fas fa-eye"></i>
+                            <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
                             </Link>
                         </div>
                         <div className={classes.overlay}></div>

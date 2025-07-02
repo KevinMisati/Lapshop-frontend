@@ -3,6 +3,7 @@ import classes from './Header.module.css'
 import CartLink from './CartLink'
 import { Link }  from 'react-router-dom'
 import { AccountContext } from '../../AccountContext'
+import { FaUser } from "react-icons/fa";
 
 
 const Header = ({isUserLoggedIn}) => {
@@ -36,7 +37,7 @@ const Header = ({isUserLoggedIn}) => {
                         <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>
                         :
                         <Link className={classes["nav-link"]} to={`/account`}>
-                            <i class="fas fa-user"></i>
+                            <FaUser className="text-xl text-brand-primary" />
                         </Link>
                     } 
                     
