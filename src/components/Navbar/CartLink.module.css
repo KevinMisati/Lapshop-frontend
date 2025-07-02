@@ -15,8 +15,8 @@
     font-size: 1.5rem;
 }
 .quantity{
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: #fff;
     color: var(--red-color);
@@ -24,5 +24,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    transform: translateY(-7px) translateX(7px);
+    transform: translateY(-35px) translateX(17px);
+}
+.shopping-icon{
+    /* text-white bg-brand-accent hover:bg-emerald-600 p-2 rounded-full text-3xl transition; */
+    color: white;
+    background-color: var(--clr-accent);
+    background-color: green;
 }

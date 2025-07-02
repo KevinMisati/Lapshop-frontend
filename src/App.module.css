@@ -11,5 +11,5 @@ h3{
 }
 
 .app{
-    @apply bg-brand-bodyBg;
+    background-color: var(--clr-body);
 }

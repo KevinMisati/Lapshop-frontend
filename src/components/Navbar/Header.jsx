@@ -22,7 +22,6 @@ const Header = ({isUserLoggedIn}) => {
             </div>
             <nav className={classes.logo}>
                 <Link className={classes["nav-link"]} to="/store">Store</Link>
-                
             </nav>
             </div>
             

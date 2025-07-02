@@ -1,11 +1,12 @@
 .header-container{
-    @apply bg-brand-primary text-white;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: sticky;
+    color: white;
     top: 0;
+    background-color: var(--clr-body-accent);
 }
 .header{
     width:100%;
@@ -35,4 +36,5 @@
     cursor: pointer;
     font-size: 1.2rem;
     transition: .5s all;
+    color: var(--clr-text);
 }

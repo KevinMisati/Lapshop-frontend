@@ -1,16 +1,18 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root{
     
-    --clr-body:#fb8500;
+    --clr-body-accent:#111827;
     --clr-body:#f3f3f3;
     --clr-body:rgb(222, 214, 209);
     --clr-body:#ded6d1;
+    --clr-text:#F9FAFB;
     
     --clr-light:#fff;
     --clr-accent:#023047;
+    --clr-accent:#22D3EE;
     --clr-dark:#131921;
 
     --clr-btn1:#3C43A4;
@@ -19,6 +21,7 @@
     --blue-color:#3C43A4;
     --red-color:#ff5063;
     --transition:.5s all;
+    
 }
 
 :global {
@@ -36,4 +39,10 @@ body,
     justify-content: stretch !important;
     width:auto !important;
     height: auto !important;
+}
+
+.shopping-icon{
+    /* text-white bg-brand-accent hover:bg-emerald-600 p-2 rounded-full text-3xl transition; */
+    color: white !important;
+    font-size: 1.5rem;
 }

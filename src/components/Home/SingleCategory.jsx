@@ -1,4 +1,3 @@
-//import classes from "./SingleCategory.module.css"
 import classes from "../Utilities/SingleProduct.module.css"
 import { useNavigate } from 'react-router-dom'
 import { FaEye } from 'react-icons/fa';
