@@ -8,12 +8,12 @@ export default {
   extend: {
     colors: {
       brand: {
-        primary: '#2563EB',  // use as bg-brand-primary
-        secondary: '#64748B',
-        accent: '#10B981',
-        background: '#F9FAFB',
-        dark: '#1F2937',
-      }
+  primary: '#111827',  // very dark gray
+  accent: '#22D3EE',   // cyan
+  highlight: '#9333EA',// violet
+  background: '#0F172A',
+  text: '#F9FAFB'
+}
     }
   },
 },
