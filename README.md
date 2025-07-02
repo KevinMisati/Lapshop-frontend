@@ -1,25 +1,12 @@
-# Lapshop
+# React + Vite
 
-![electronics](https://user-images.githubusercontent.com/65482241/174968664-ac558114-3e26-441e-b384-80209c12dab5.png)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Lapshop is an e-commerce web application for selling electronics.
+Currently, two official plugins are available:
 
-Check it live [here](https://lapstoro.netlify.app/)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-# Technologies Used
-React
+## Expanding the ESLint configuration
 
-Sanity.io
-
-## Installation
-
-1. Clone the code from this repository
-2. Run npm install from the project folder
-3. Run npm start and the project will be opened in the browser
-
-
-
-## Contributing
-Pull requests are welcome.
-
-"# Lapshop-frontend" 
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -2,9 +2,9 @@ import React,{useState,useEffect,useContext} from 'react'
 import classes from "./ProductInfo.module.css"
 import {useParams} from "react-router-dom"
 import AddToCartButton from '../components/Utilities/AddToCartButton'
-import { CartContext } from '../../src/Context'
+import { CartContext } from '../Context'
 import { apiService } from '../axios/index'
-import Loader from '../../src/components/Loader'
+import Loader from '../components/Loader'
 import SimilarProducts from '../components/ProductInfo/SimilarProducts'
 
 const ProductInfo = () => {

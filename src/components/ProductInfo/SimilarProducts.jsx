@@ -1,7 +1,7 @@
 import {useState,useEffect} from 'react'
-import Products from '../../components/Store/Products'
+import Products from '../Store/Products'
 import { apiService } from '../../axios'
-import Loader from '../../components/Loader'
+import Loader from '../Loader'
 import Title from '../Utilities/Title'
 
 const SimilarProducts = ({product}) => {
