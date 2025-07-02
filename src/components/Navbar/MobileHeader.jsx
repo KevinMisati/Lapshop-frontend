@@ -43,9 +43,7 @@ const Header = ({isUserLoggedIn}) => {
                 <section className={classes["side-menu"]}>
 
                     <div className={classes["menu-and-header"]}>
-                        <div>
-                            <h3>Menu</h3>
-                        </div>
+                        
                         <div onClick={handleMenuToggling } className={classes.hurmbuger}>
                             <span className={classes["first-line"]}></span>
                             

@@ -5,6 +5,7 @@
     justify-content: center;
     position: sticky;
     top: 0;
+    background-color: var(--clr-body-accent);
 }
 .header{
     width:100%;
@@ -25,8 +26,8 @@
 }
 .nav-link-logo{
     text-decoration: none;
-    color: #000;
     cursor: pointer;
+    color: var(--clr-text);
 }
 .cart-and-hurmbuger-container{
     display: flex;
@@ -42,17 +43,15 @@
 .first-line,
 .second-line,
 .third-line{
-    background: #000;
     border: none;
     margin: .2rem;
     outline: none;
     width: 27px;
     height: 3px;
     position: relative;
-    background: #565656;
     transition: all 0s .1s,width 150ms ease-in-out;
     display: block;
-    
+    background-color: var(--clr-text);
 }
 
 .side-menu-toggler{
@@ -66,6 +65,7 @@
     width: 80%;
     background-color: var(--clr-body);
     padding: 1rem;
+    background-color: var(--clr-body-accent);
 }
 .menu-and-header {
     display: flex;
@@ -91,18 +91,20 @@
     margin: 0;
     transform: rotate(-45deg) translateY(-1px) ;
 }
-
-
-
 .nav-link{
     text-decoration: none;
-    color: #000;
     cursor: pointer;
     font-size: 1.2rem;
     transition: .5s all;
+    color: var(--clr-text);
 }
-.nav-link:hover{
-   color: #3C43A4;
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 1rem;
 }
 .menu li{
     list-style: none;

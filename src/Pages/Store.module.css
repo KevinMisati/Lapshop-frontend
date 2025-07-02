@@ -11,6 +11,7 @@
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
+    margin-top: .5rem;
 }
 .filter-container select{
     border: 1px solid var(--clr-accent) !important;
