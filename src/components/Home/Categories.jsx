@@ -17,7 +17,7 @@ const Categories = () => {
 
     useEffect(resp => {
         apiService({
-            url:"categories",
+            url:"categories/",
             method:"GET",
         }).then(res => {
             setCategories(res.data)

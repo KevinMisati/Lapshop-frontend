@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
     
     --clr-body:#fb8500;
@@ -16,6 +20,7 @@
     --red-color:#ff5063;
     --transition:.5s all;
 }
+
 :global {
     @import 'node_modules/slick-carousel/slick/slick';
 }
