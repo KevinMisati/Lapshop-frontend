@@ -13,6 +13,6 @@
     border-color: #717171;
 }
 .button:hover{
-    background-color: #3C43A4 !important;
+    background-color: var(--clr-accent) ;
     color: white !important;
 }

@@ -64,6 +64,8 @@
     justify-content: center;   /* horizontal alignment */
     align-items: center;       /* vertical alignment */
     overflow: hidden;
+    width:160px !important;
+    height: 190px;
 }
 .img-container_inner img{
     max-width:100%;
@@ -76,18 +78,16 @@
 .product-info{
     margin: .5rem auto;
 }
-.product-name a,
-.product-name h5{
+.product-name a{
     line-height: 1.1;
-    font-size: 1.2rem;
-    color: var(--red-color);
+    font-size: .85rem;
+    color: var(--clr-accent);
     text-decoration: none;
     font-weight: 700;
     transition: .5s all;
 }
-.product-name a:hover,
-.product-name h5:hover{
-    color:#3C43A4 ;
+.product-name a:hover{
+    color: var(--clr-accent-dark);
 }
 .product-name{
     margin: 0rem auto .25rem 0 ;
@@ -124,55 +124,36 @@
     z-index: 100;
 }
 
-@media screen and (max-width:600px){
-    .single-product-container{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+@media screen and (min-width:400px){
+    .single-product{
+        margin:.1rem;
     }
-    .img-container_outer{
-    vertical-align: middle;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-} 
-.img-container_inner{
-    text-align: center;
 }
-.product-name a,
-.product-name h5{
-    font-size: 1rem;
-}
-.single-product{
-    margin:.2rem;
-}
-}
-@media screen and (max-width:500px){
+
+@media screen and (min-width:500px){
     .img-container_inner{
         width:175px !important;
         height: 190px;
     }
     .product-name a,
-.product-name h5{
-    font-size: .9rem;
-}
-.single-product{
-    margin:.1rem;
-}
+    .product-name h5{
+        font-size: .9rem;
+    }
+    .single-product{
+        margin:.1rem;
+    }
 }
 
-@media screen and (max-width:400px){
+@media screen and (min-width:600px){
     .img-container_inner{
-        width:160px !important;
-        height: 190px;
+        width:225px !important;
+        height: 220px;
     }
     .product-name a,
-.product-name h5{
-    font-size: .85rem;
-}
-.single-product{
-    margin:.1rem;
-}
+    .product-name h5{
+        font-size: .9rem;
+    }
+    .single-product{
+        margin:.2rem;
+    }
 }

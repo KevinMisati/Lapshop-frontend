@@ -54,12 +54,12 @@ const SingleProduct = ({product}) => {
                     </div>
                     <div className={classes["product-info"]}>
                         <div className={classes["product-name"]}>
-                            <h5>
+                            <p>
                                 <Link to={"/store/product/" + product.id}>
                                     {short_name}
                                 </Link>
                                 
-                            </h5>
+                            </p>
                         </div>
 
                         < div className={classes["product-price"]}>
