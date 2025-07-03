@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useContext} from 'react'
+import {useState,useEffect,useContext} from 'react'
 import classes from "./ProductInfo.module.css"
 import {useParams} from "react-router-dom"
 import AddToCartButton from '../components/Utilities/AddToCartButton'

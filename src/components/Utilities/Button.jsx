@@ -1,6 +1,6 @@
 import classes from "./Button.module.css"
 
-const Button = ({text,color,background,font}) => {
+const Button = ({text,color,background,font,onClick= () => {}}) => {
     return (
         
             <button style={{
@@ -8,7 +8,11 @@ const Button = ({text,color,background,font}) => {
                 backgroundColor:background,
                 fontSize:font,
             }} 
-            className={classes.button}>{text}</button>
+                onClick={onClick}
+                className={classes.button}
+            >
+                {text}
+            </button>
     )
 }
 
