@@ -40,7 +40,6 @@ const Categories = () => {
                 <Slider {...settings}>
                     {categories.map(category => {
                         return (
-                            
                             <SingleCategory
                                 category={category}
                             /> 

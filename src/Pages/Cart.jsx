@@ -4,7 +4,6 @@ import classes from "./Cart.module.css"
 import SingleProduct from '../components/Cart/SingleProduct'
 import CheckOutButton from '../components/Cart/CheckOut'
 import { CartContext } from '../Context'
-import { Link } from 'react-router-dom'
 import Button from '../components/Utilities/Button'
 
 const Cart = () => {
@@ -35,7 +34,6 @@ const Cart = () => {
                 }  
                     
                 </div>
-                
                 <CheckOutButton />
             </div>
             }    
