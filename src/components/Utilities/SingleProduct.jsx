@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import {useContext} from 'react'
 import classes from "./SingleProduct.module.css"
 import Button from './Button'
 import { Link} from 'react-router-dom'
