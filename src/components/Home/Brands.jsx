@@ -1,32 +1,19 @@
-import {useState,useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import classes from "./home.module.css"
 import Title from '../Utilities/Title'
-import { apiService } from '../../axios'
+import RedirectBrand from './RedirectBrand'
 
-const Brands = () => {
-    const navigate = useNavigate()
-    const [brands,setBrands]  = useState([])
-    const getBrands = () => {
-        apiService({
-            url:"brands/",
-            method:"GET",
-        }).then(res => {
-            setBrands(res.data)
-        }).catch(error => console.log(error))
-    }
-    useEffect(() => {
-        getBrands()
-    }, []) 
-
-    const handleRedirect = (brand) => {
-        navigate("/store",{
-            state:{
-                brandId:brand.id
-            }
-        })
+const Brands = async() => {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/brands`,
+        {cache:'no-store'}
+    )
+    if(!res.ok){
+        return <div>Failed to load brands.</div>
     }
 
+    const brands = await res.json()
+    
     if(brands.length === 0) return ""
     return (
         <div className={classes["brandsOuterContainer"]}>
@@ -35,9 +22,10 @@ const Brands = () => {
                 <div className={classes["brands-grid"]}>
                     {
                         brands.filter(brand => (brand.name !== "Others" && brand.name !== "Phones" && brand.name !== "Accessories")).map(brand => (
-                            <div onClick={() => handleRedirect(brand)} className={classes["brand-card"]}>
-                                <img alt={brand.name} src={brand.image} />
-                            </div>
+                            <RedirectBrand 
+                                brand={brand}
+                                classes={classes}
+                            />
                         ))
                     }
                 </div>
