@@ -1,8 +1,7 @@
 import classes from "./home.module.css"
-import {Link,useNavigate} from "react-router-dom"
-
+import {useNavigate} from "react-router-dom"
+import Link from "next/link"
 const Banner = () => {
-    const navigate = useNavigate()
     return (
         <section className={classes["hero-section"]}>
             <div className={classes["hero-bg"]}></div>
@@ -15,7 +14,7 @@ const Banner = () => {
                 Discover high-performance laptops, accessories, and gear — all handpicked for quality and value.
                 </p>
                 <div className={classes["hero-buttons"]}>
-                <button onClick={() => navigate("/store")} className={classes["shop-button"]}>Shop Deals</button>
+                <Link href="/store" className={classes["shop-button"]}>Shop Deals</Link>
                 </div>
             </div>
             <div className={classes["overlay-tint"]}></div>
