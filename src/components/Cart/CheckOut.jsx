@@ -1,13 +1,11 @@
-import {useContext} from 'react'
-import { useRouter } from 'next/router'
-import { AccountContext } from '../../AccountContext'
+import { useRouter } from 'next/navigation'
 import classes from "./CheckOut.module.css"
 import { useSelector } from 'react-redux'
 
 const CheckOutButton = () => {
     const router = useRouter()
-    const { sub_total} = useSelector((state) => state.cart)
-    let { userDetails } = useContext(AccountContext)
+    let { sub_total} = useSelector((state) => state.cart)
+    let { userDetails } = useSelector((state) => state.account)
     sub_total = sub_total.toFixed(2)
 
     const handleCheckingOut = (e) => {
