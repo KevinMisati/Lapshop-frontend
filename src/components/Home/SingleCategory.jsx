@@ -1,9 +1,10 @@
+"use client"
 import classes from "../Utilities/SingleProduct.module.css"
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from "next/navigation";
 import { FaEye } from 'react-icons/fa';
 
 const SingleCategory = ({category}) => {
-    const navigate = useNavigate()
+    const router = useRouter()
     const shorten_name = (name) => {
         const name_arr = name.split(" ")
         const short_name_arr = name_arr.splice(0,3)
@@ -13,7 +14,7 @@ const SingleCategory = ({category}) => {
     const short_name = shorten_name(category.name)
 
     const handleRedirect = () => {
-        navigate("/store",{state:{categoryId: category.id}})
+        router.push("/store",{state:{categoryId: category.id}})
     }
     
     return (

@@ -1,9 +1,7 @@
-import React from 'react'
 import TrendingClient from './TrendingClient'
-
 const Trending = async() => {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/products/?trending-true`,
+        `${process.env.NEXT_PUBLIC_API_URL}/products/?trending=true`,
         {cache:'no-store'}
     )
     if(!res.ok){

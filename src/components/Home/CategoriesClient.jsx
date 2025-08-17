@@ -2,17 +2,17 @@
 import dynamic from "next/dynamic"
 import classes from "./home.module.css"
 import Title from '../Utilities/Title'
-import SingleProduct from '../Utilities/SingleProduct'
 import Loader from '../Loader'
+import SingleCategory from './SingleCategory'
 import { useWindowWidth } from '../Utilities/useWindowWidth'
 import { getSliderSettings } from '../Utilities/helpers'
 const Slider = dynamic(() => import('react-slick'),{ssr:false})
 
-const TrendingClient = ({topSelling}) => {
+const CategoriesClient = ({categories}) => {
     const screenWidth = useWindowWidth()
     const settings = getSliderSettings(screenWidth)
-    console.log(topSelling,"hello top selling")
-    if(!topSelling){
+
+    if(!categories){
         return <Loader />
     }
 
@@ -20,24 +20,23 @@ const TrendingClient = ({topSelling}) => {
         <div className={classes["top-selling_container"]}>
         <div className={classes["top-selling"]}>
             <header className={classes["top-selling_header"]}>
-                <Title title="Trending products"  />
+                <Title title="Categories"  />
             </header>
-            <main className={classes.products} >
+            <main className={classes.products}>
                 <Slider {...settings}>
-                    {topSelling.map(product => {
+                    {categories.map(category => {
                         return (
-                            <SingleProduct 
-                                product={product}
+                            <SingleCategory
+                                category={category}
                             /> 
                         )
                     })}
                 </Slider>
             </main> 
-
         </div>
             
         </div>
     )
 }
 
-export default TrendingClient
+export default CategoriesClient
