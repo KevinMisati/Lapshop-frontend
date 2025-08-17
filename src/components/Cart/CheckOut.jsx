@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../../Context'
+import { CartContext } from '../../redux/cartSlice'
 import { AccountContext } from '../../AccountContext'
 import classes from "./CheckOut.module.css"
 

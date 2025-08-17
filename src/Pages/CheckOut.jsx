@@ -1,7 +1,7 @@
 import {useState,useContext} from 'react'
 import classes from "./CheckOut.module.css"
 import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../Context'
+import { CartContext } from '../redux/cartSlice'
 
 const CheckOut = () => {
     const {resetCart} = useContext(CartContext)

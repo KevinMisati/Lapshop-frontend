@@ -1,7 +1,6 @@
 "use client"
 import classes from "./CartLink.module.css"
 import Link from 'next/link'
-import {CartContext} from "../../Context"
 import { FaShoppingBag } from 'react-icons/fa';
 
 const CartLink = () => {

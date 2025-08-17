@@ -1,17 +1,16 @@
-import {useContext} from 'react'
+"use client"
+import { useDispatch } from "react-redux"
 import classes from "./SingleProduct.module.css"
 import Button from './Button'
-import { Link} from 'react-router-dom'
-import { CartContext } from "../../Context"
+import Link from "next/link"
 import { useWindowWidth } from './useWindowWidth'
 import { FaEye } from 'react-icons/fa';
-
+import { add_to_cart } from '../../redux/cartSlice'
 
 const SingleProduct = ({product}) => {
-
-    const {add_to_cart} = useContext(CartContext)
+    const dispatch = useDispatch()
     const handleItemIncrement = () => {
-        add_to_cart(product)
+        dispatch(add_to_cart(product))
     }
     
     const screenWidth = useWindowWidth()
@@ -43,7 +42,7 @@ const SingleProduct = ({product}) => {
                     }
                     <div id="jd" className={classes["img-container_outer"]}>
                         <div  className={classes["eye-icon"]}>
-                            <Link to={"/store/product/" + product.id}>
+                            <Link href={"/store/product/" + product.id}>
                             <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
                             </Link>
                         </div>
@@ -55,7 +54,7 @@ const SingleProduct = ({product}) => {
                     <div className={classes["product-info"]}>
                         <div className={classes["product-name"]}>
                             <p>
-                                <Link to={"/store/product/" + product.id}>
+                                <Link href={"/store/product/" + product.id}>
                                     {short_name}
                                 </Link>
                                 

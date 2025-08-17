@@ -2,7 +2,7 @@ import React,{useContext} from 'react'
 import classes from "./Navbar.module.css"
 import Header  from './Header'
 import MobileHeader from './MobileHeader'
-import { CartContext } from '../../Context'
+import { CartContext } from '../../redux/cartSlice'
 
 const Navbar = () => {
 

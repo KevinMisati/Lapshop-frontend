@@ -15,7 +15,7 @@ import NewPassword from "./components/Account/NewPassword";
 import Cart from "./Pages/Cart"
 import Store from "./Pages/Store"
 import ProductInfo from "./Pages/ProductInfo";
-import {CartProvider} from "./Context"
+import {CartProvider} from "./redux/cartSlice"
 import { AccountProvider } from "./AccountContext";
 import CheckOut from "./Pages/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";

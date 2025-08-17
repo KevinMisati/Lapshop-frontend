@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import classes from "./Cart.module.css"
 import SingleProduct from '../components/Cart/SingleProduct'
 import CheckOutButton from '../components/Cart/CheckOut'
-import { CartContext } from '../Context'
+import { CartContext } from '../redux/cartSlice'
 import Button from '../components/Utilities/Button'
 
 const Cart = () => {

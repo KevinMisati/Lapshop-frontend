@@ -1,23 +1,12 @@
-import {useState,useContext,useEffect} from 'react'
+import {useState,useEffect} from 'react'
+import { useDispatch } from 'react-redux'
 import classes from "./SingleProduct.module.css"
-import { CartContext } from '../../Context'
-
-
+import { increase_quantity, increase_sub_total,decrease_sub_total,remove_product_from_cart } from '../../redux/cartSlice'
 
 const SingleProduct = ({product}) => {
-
-    const {
-        increase_sub_total,
-        decrease_sub_total,
-        remove_product_from_cart,
-        increase_quantity
-    } = useContext(CartContext)
-
-    
+    const dispatch = useDispatch()
     let localCartState = localStorage.getItem('cartState')
     localCartState = JSON.parse(localCartState)
-    //let product = localCartState.products_in_cart.filter(prod => prod._id === id)
-    //product = product[0]
     const defaultQuantity = product.quantity
     const defaultPrice = product.quantity * product.price 
 
@@ -26,24 +15,24 @@ const SingleProduct = ({product}) => {
     
 
     const handleItemIncrement = (id,price) => {
-        increase_sub_total(price)
+        dispatch(increase_sub_total(price))
         settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(price))
         setQuantityOfSpecificItem(prev => prev + 1)
     }
 
     const handleItemdecrement = (id,price,quantity) => {
         if (quantityOfSpecificItem > 1){
-            decrease_sub_total(price)
+            dispatch(decrease_sub_total(price))
             settotalPriceOfSpecificItem(prevPrice => prevPrice - Number(price))
             setQuantityOfSpecificItem(prev => prev - 1)
         }
         else if(quantityOfSpecificItem === 1){
-            remove_product_from_cart(id,price,1)
+            dispatch(remove_product_from_cart(id,price,1))
         }
     }
 
     useEffect(() => {
-        increase_quantity(quantityOfSpecificItem,product.id)
+        dispatch(increase_quantity(quantityOfSpecificItem,product.id))
     },[quantityOfSpecificItem,product.id]) 
     
     const handleProductRemoval = (id,price,quantity) => {
