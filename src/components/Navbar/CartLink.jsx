@@ -1,21 +1,20 @@
-import { useContext } from 'react'
+"use client"
 import classes from "./CartLink.module.css"
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import {CartContext} from "../../Context"
 import { FaShoppingBag } from 'react-icons/fa';
 
 const CartLink = () => {
-    const {number_of_items} = useContext(CartContext)
-    
+    const number_of_items = 0//useContext(CartContext)
     return (
         <div className={classes["cart-container"]}>
             <div className={classes["cart"]}>
-                <Link className={classes["nav-link"]} to="/cart">
+                <Link className={classes["nav-link"]} href="/cart">
                     <FaShoppingBag className="shopping-icon" />
                 </Link>
             </div>
             <div className={classes["quantity"]}>
-                <Link className={classes["nav-link"]} to="/cart">
+                <Link className={classes["nav-link"]} href="/cart">
                     {number_of_items}
                 </Link>
             </div>
