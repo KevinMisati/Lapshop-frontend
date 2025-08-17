@@ -42,7 +42,7 @@ const SingleProduct = ({product}) => {
                     }
                     <div id="jd" className={classes["img-container_outer"]}>
                         <div  className={classes["eye-icon"]}>
-                            <Link href={"/store/product/" + product.id}>
+                            <Link href={"/product/" + product.id}>
                             <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
                             </Link>
                         </div>
@@ -54,7 +54,7 @@ const SingleProduct = ({product}) => {
                     <div className={classes["product-info"]}>
                         <div className={classes["product-name"]}>
                             <p>
-                                <Link href={"/store/product/" + product.id}>
+                                <Link href={"/product/" + product.id}>
                                     {short_name}
                                 </Link>
                                 

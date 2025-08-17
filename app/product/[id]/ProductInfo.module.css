@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Maven+Pro:wght@400;500;700&family=Montserrat&family=Roboto:wght@400;700&family=Zen+Kaku+Gothic+Antique:wght@300;400;500&display=swap');
+.product-info-container{
+    background-color: var(--gray-color);
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color:#555;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin-top: .5rem;
+}
+.product-info{
+    display: flex;
+    width: 100%;
+    max-width: 1140px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.img-container{
+    background: #fff;
+    padding: .25rem;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.img-container img{
+    width: 90%;
+    transition: .5s all;
+}
+.img-container:hover img {
+    transform: scale(1.2);
+}
+.product-desc{
+    width: 90%;
+    max-width: 500px;
+}
+.product-desc>*{
+    margin: 0 2rem;
+}
+.product-desc h2 {
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+.product-desc p{
+    line-height: 1.5;
+    color:#555;
+    font-size: 1.1rem;
+
+}
+
+.add-btn{
+    margin-top: 2rem;
+}
+@media screen and (max-width:700px){
+    .product-info{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-desc>*{
+    margin: 0;
+}
+    .img-container{
+        width: auto !important;
+        background: #fff;
+        width: 400px !important;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+
+    }
+    .product-desc{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+    .product-desc p{
+        font-size: 1rem;
+        margin-bottom: 1rem;
+}
+    .change-amount{
+        align-self: center;
+    }
+    .img-container img{
+        max-width: 300px;
+        height: auto;
+    }
+    
+}
+@media screen and (max-width:576px){
+    .img-container{
+        background: #fff;
+        width: auto !important;
+        max-width: 100%;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+
+    }
+}

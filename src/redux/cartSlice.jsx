@@ -5,13 +5,13 @@ import { createSlice } from "@reduxjs/toolkit"
 const savedCart = typeof window !== "undefined" ? localStorage.getItem("cartState") : null
 
 const defaultCartState = {
-number_of_items: 0,
-products_in_cart: [],
-sub_total: 0,
-user: {
-    uid: "",
-    isLoggedIn: false,
-},
+    number_of_items: 0,
+    products_in_cart: [],
+    sub_total: 0,
+    user: {
+        uid: "",
+        isLoggedIn: false,
+    },
 }
 
 const initialState = savedCart ? JSON.parse(savedCart) : defaultCartState

@@ -1,22 +1,22 @@
 import {useContext} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../../redux/cartSlice'
+import { useRouter } from 'next/router'
 import { AccountContext } from '../../AccountContext'
 import classes from "./CheckOut.module.css"
+import { useSelector } from 'react-redux'
 
 const CheckOutButton = () => {
-    const navigate = useNavigate()
-    let {sub_total} = useContext(CartContext)
+    const router = useRouter()
+    const { sub_total} = useSelector((state) => state.cart)
     let { userDetails } = useContext(AccountContext)
     sub_total = sub_total.toFixed(2)
 
     const handleCheckingOut = (e) => {
         e.preventDefault()
         if(userDetails.user_id){
-            navigate("/checkout")
+            router.push("/checkout")
         }
         else{
-            navigate("/account/login",{state:{nextPage:"checkout"}})
+            router.push("/account/login",{state:{nextPage:"checkout"}})
         }
     }
     
