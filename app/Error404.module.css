@@ -12,7 +12,7 @@
     text-align: center;
     justify-content: center;
     color: #fff;
-    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)) ,url("../images/404.png") center/cover no-repeat;
+    background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)) ,url("/images/404.png") center/cover no-repeat;
 }
 /* https://image.freepik.com/free-vector/error-404-concept-landing-page_23-2148246764.jpg?w=740 */
 .home-link{

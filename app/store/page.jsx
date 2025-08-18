@@ -1,11 +1,11 @@
 'use client'
 import {useState,useEffect} from 'react'
 import { useSearchParams } from 'next/navigation'
-import classes from "./Store.module.css"
+import Image from 'next/image'
+import classes from "./store.module.css"
 import Products from '@/components/Store/Products'
 import { apiService } from '@/axios'
 import Loader from '@/components/Loader'
-import nodata from '@/images/nodata.png'
 
 const Store = () => {
     const searchParams = useSearchParams()
@@ -124,7 +124,12 @@ const Store = () => {
                         </div> : 
                         <div className={classes["nodata-container"]}>
                             <div className={classes["nodata-container-img"]} >
-                                <img alt='No data found' src={nodata} />
+                                <Image 
+                                    alt='No data found' 
+                                    src='/images/nodata.png' 
+                                    width={400}
+                                    height={400}
+                                />
                             </div> 
                             <div className={classes["nodata-container-text"]}>
                                 <h2 className="text-xl font-semibold mb-2">

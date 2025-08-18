@@ -1,11 +1,13 @@
-import {useState,useContext} from 'react'
+"use client"
+import {useState} from 'react'
+import { useDispatch } from 'react-redux'
 import classes from "./CheckOut.module.css"
-import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../redux/cartSlice'
+import { useRouter } from 'next/navigation'
+import { resetCart } from '@/redux/cartSlice'
 
 const CheckOut = () => {
-    const {resetCart} = useContext(CartContext)
-    const  navigate = useNavigate()
+    const router = useRouter()
+    const dispatch = useDispatch()
     const [isAddressDetailsOpen,setIsAddressDetailsOpen] = useState(false)
     const [pickUpStations,setPickUpStations] = useState(false)
     const handleToggleAddressDetails = (e) => {
@@ -18,8 +20,8 @@ const CheckOut = () => {
     }
     const handleOrders = (e) => {
         e.preventDefault()
-        resetCart()
-        navigate("/thankyou")
+        dispatch(resetCart)
+        router.push("/thankyou")
     }
     return (
         <div className={classes["checkout-container"]}>

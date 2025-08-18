@@ -36,7 +36,7 @@
 .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('../../images/29118.jpg');
+    background-image: url('/images/29118.jpg');
     background-size: cover;
     background-position: center;
     opacity: 0.6;
