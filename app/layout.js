@@ -54,15 +54,14 @@ export default function RootLayout({ children }) {
                     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
                 />
             </head>
-            <body suppressHydrationWarning={true} className={inter.className} >
-              <ReduxProvider>
-                <Navbar />  
-                <main className="min-h-screen">
+            <body suppressHydrationWarning={true} className={inter.className}>
+                <ReduxProvider>
+                    <Navbar />
+                    <main className="min-h-screen">
                     {children}
-                </main> 
-                <Footer />
-              </ReduxProvider>
-                
+                    </main>
+                    <Footer />
+                </ReduxProvider>
             </body>
         </html>
     );

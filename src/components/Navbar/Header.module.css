@@ -1,11 +1,9 @@
-.header-container{
+.header-container {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: sticky;
+    top: 0;   
+    z-index: 1000; 
     color: white;
-    top: 0;
     background-color: var(--clr-body-accent);
 }
 .header{
@@ -15,7 +13,6 @@
     justify-content: space-between;
     padding: 1rem .5rem;
     align-items: center;
-    position: sticky;
 }
 .logo-and-store-links-container{
     display: flex;
