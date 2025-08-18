@@ -54,8 +54,6 @@ reducers: {
 })
 
 export const {
-    logInUser,
-    logOutUser,
     add_to_cart,
     increase_quantity,
     increase_sub_total,

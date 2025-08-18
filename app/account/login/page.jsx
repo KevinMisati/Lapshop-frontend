@@ -4,7 +4,7 @@ import classes from "../account.module.css"
 import Link from 'next/link';
 import { apiService } from '@/axios';
 import Snackbar from '@/components/Snackbar';
-import { logInUser } from '@/redux/cartSlice';
+import { loginUser } from '@/redux/accountSlice';
 import { useDispatch } from 'react-redux';
 import { useParams, useRouter} from 'next/navigation';
 
@@ -30,7 +30,7 @@ const Login = () => {
                 method:"POST",
                 data:form
             }).then((res) => {
-                dispatch(logInUser(res.data))
+                dispatch(loginUser(res.data))
                 setSuccessMessage("Logged in successfully")
                 setShowSnackbar(true)
                 setTimeout(() => {
