@@ -18,10 +18,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
 }
-.logo{
-    margin-right: 5rem;
-}
+
 .account-and-cart{
     display: flex;
 }

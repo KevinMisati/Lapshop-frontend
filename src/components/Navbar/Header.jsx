@@ -19,13 +19,16 @@ const Header = () => {
                     
                 
             </div>
-            <nav className={classes.logo}>
+            {/* <nav className={classes.logo}>
                 <Link className={classes["nav-link"]} href="/store">Store</Link>
-            </nav>
+            </nav> */}
             </div>
             
 
             <div className={classes["account-and-cart"]}>
+                <nav className={classes.logo}>
+                    <Link className={classes["nav-link"]} href="/store">Store</Link>
+                </nav>
                 <div className={classes.cart}>
                     <CartLink />
                 </div>
