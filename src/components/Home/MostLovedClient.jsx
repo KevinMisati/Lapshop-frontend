@@ -1,6 +1,5 @@
 "use client"
 import dynamic from "next/dynamic"
-import classes from "./home.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
 import Loader from '../Loader'
@@ -17,16 +16,15 @@ const MostLovedClient = ({mostLoved}) => {
     }
 
     return (
-        <div className={classes["top-selling_container"]}>
-        <div className={classes["top-selling"]}>
-            <header className={classes["top-selling_header"]}>
+        <div className="top-selling_container">
+        <div className="top-selling">
+            <header className="top-selling_header">
                 <Title title="Most-loved products"  />
             </header>
-            <main className={classes.products} >
+            <main className="products" >
                 <Slider {...settings}>
                     {mostLoved.map(product => {
                         return (
-                            
                             <SingleProduct 
                                 product={product}
                             /> 

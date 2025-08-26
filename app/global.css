@@ -40,6 +40,18 @@ h1, h2, h3,h4,h5,h6{
     height: auto !important;
 }
 
+.top-selling_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-color);
+    padding: 1rem;
+}
+.top-selling{
+    width: 100%;
+    max-width: 1144px;
+}
+
 .shopping-icon{
     /* text-white bg-brand-accent hover:bg-emerald-600 p-2 rounded-full text-3xl transition; */
     color: white !important;

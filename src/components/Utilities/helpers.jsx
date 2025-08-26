@@ -1,4 +1,5 @@
 export const getSliderSettings = (width) => {
+    console.log(width,"hello width")
     let slides = 1
     if(width < 300) slides = 1
     if(width < 500) slides = 2

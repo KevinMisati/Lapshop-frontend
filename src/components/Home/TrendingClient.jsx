@@ -17,12 +17,12 @@ const TrendingClient = ({topSelling}) => {
     }
 
     return (
-        <div className={classes["top-selling_container"]}>
-        <div className={classes["top-selling"]}>
-            <header className={classes["top-selling_header"]}>
+        <div className="top-selling_container">
+        <div className="top-selling">
+            <header className="top-selling_header">
                 <Title title="Trending products"  />
             </header>
-            <main className={classes.products} >
+            <main className="products" >
                 <Slider {...settings}>
                     {topSelling.map(product => {
                         return (

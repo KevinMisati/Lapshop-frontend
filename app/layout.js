@@ -9,12 +9,12 @@ import "./global.css"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-    title: 'Liviint Homes | Affordable Apartments & Bedsitters in Nairobi, Kisii & More',
-    description: 'Find affordable single rooms, bedsitters, and studio apartments in Nairobi, Kisii, and nearby towns. Verified listings. No hassle — just move in.',
+    title: 'comps',
+    description: 'comps',
     metadataBase: new URL('https://www.liviint.com'),
     openGraph: {
-        title: 'Liviint Homes | Discover Apartments That Feel Like Home',
-        description: 'Explore bedsitters, single rooms, and studios in Kenya. Verified, affordable, and updated regularly.',
+        title: '',
+        description: ', and updated regularly.',
         url: 'https://www.liviint.com',
         siteName: 'Liviint Homes',
         images: [
