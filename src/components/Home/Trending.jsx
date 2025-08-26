@@ -1,14 +1,19 @@
 import TrendingClient from './TrendingClient'
 const Trending = async() => {
-    const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/products/?trending=true`,
+    console.log(process.env.NEXT_PUBLIC_API_URL,"hello process.env.NEXT_PUBLIC_API_URL")
+    let topSelling = []
+    try {
+        const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/products/`,
         {cache:'no-store'}
-    )
-    if(!res.ok){
-        return <div>Failed to load trending products.</div>
+        )
+        if(!res.ok){
+            return <div>Failed to load trending products.</div>
+        }
+        topSelling = await res.json()
+    } catch (error) {
+        console.log(error,"hello error")
     }
-
-    const topSelling = await res.json()
 
   return <TrendingClient topSelling={topSelling} />
 }

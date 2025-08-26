@@ -20,7 +20,7 @@ const Store = () => {
 
     const getCategories = () => {
         apiService({
-            url:"categories",
+            url:"categories/",
             method:"GET",
         }).then(res => {
             let categories = res.data
