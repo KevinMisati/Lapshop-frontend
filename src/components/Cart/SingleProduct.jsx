@@ -27,7 +27,7 @@ const SingleProduct = ({product}) => {
             setQuantityOfSpecificItem(prev => prev - 1)
         }
         else if(quantityOfSpecificItem === 1){
-            dispatch(remove_product_from_cart(id,price,1))
+            dispatch(remove_product_from_cart({id,price,quantity:1}))
         }
     }
 
@@ -36,7 +36,7 @@ const SingleProduct = ({product}) => {
     },[quantityOfSpecificItem,product.id]) 
     
     const handleProductRemoval = (id,price,quantity) => {
-        remove_product_from_cart(id,price,quantity)
+        dispatch(remove_product_from_cart({id,price,quantity}))
     } 
     return (
         <div className={classes["single-product-container"]}>
@@ -58,7 +58,7 @@ const SingleProduct = ({product}) => {
 
                 </div>
                 <div className={classes["price"]}>
-                    {product.price /* totalPriceOfSpecificItem.toFixed(2) */}
+                    {product.price}
                 </div>
                 <div className={classes["remove-product"]}>
                     <button onClick={() => handleProductRemoval(product.id,product.price,quantityOfSpecificItem)}>Remove</button>

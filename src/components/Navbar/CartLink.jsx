@@ -2,9 +2,10 @@
 import classes from "./CartLink.module.css"
 import Link from 'next/link'
 import { FaShoppingBag } from 'react-icons/fa';
+import { useSelector} from "react-redux"
 
 const CartLink = () => {
-    const number_of_items = 0//useContext(CartContext)
+    const number_of_items = useSelector((state) => state.cart.number_of_items)
     return (
         <div className={classes["cart-container"]}>
             <div className={classes["cart"]}>

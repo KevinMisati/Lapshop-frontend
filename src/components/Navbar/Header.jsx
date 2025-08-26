@@ -19,9 +19,6 @@ const Header = () => {
                     
                 
             </div>
-            {/* <nav className={classes.logo}>
-                <Link className={classes["nav-link"]} href="/store">Store</Link>
-            </nav> */}
             </div>
             
 

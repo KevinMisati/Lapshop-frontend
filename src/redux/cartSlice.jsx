@@ -22,8 +22,8 @@ initialState,
 reducers: {
     add_to_cart: (state, action) => {
         const product = action.payload
+        console.log(product,"hello pr")
         const exists = state.products_in_cart.find((p) => p.id === product.id)
-
         if (!exists) {
             state.products_in_cart.unshift({ ...product, quantity: 1 })
             state.number_of_items += 1
