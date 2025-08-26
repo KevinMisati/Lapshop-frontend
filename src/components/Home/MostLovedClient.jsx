@@ -8,7 +8,6 @@ import { getSliderSettings } from '../Utilities/helpers'
 const Slider = dynamic(() => import('react-slick'),{ssr:false})
 
 const MostLovedClient = ({mostLoved}) => {
-    console.log(mostLoved,"hello most")
     const screenWidth = useWindowWidth()
     const settings = getSliderSettings(screenWidth)
     if(!mostLoved){

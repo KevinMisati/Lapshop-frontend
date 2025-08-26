@@ -11,7 +11,6 @@ const Slider = dynamic(() => import('react-slick'),{ssr:false})
 const TrendingClient = ({topSelling}) => {
     const screenWidth = useWindowWidth()
     const settings = getSliderSettings(screenWidth)
-    console.log(topSelling,"hello top selling")
     if(!topSelling){
         return <Loader />
     }
