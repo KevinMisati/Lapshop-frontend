@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
 font-family: Roboto,Helvetica,Arial,sans-serif;
-color: #555;
+color:var(--clr-gray);
 line-height: 1.5;
 font-size: 14px;
 float: left;

@@ -12,7 +12,7 @@
 .logout-container p{
     text-align: center;
     line-height: 1.5;
-    color:#555;
+    color:var(--clr-gray);
     font-size: 1.1rem;
 
 }

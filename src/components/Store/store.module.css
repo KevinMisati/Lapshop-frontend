@@ -73,4 +73,5 @@
 }
 .nodata-container-text{
     text-align: center;
+    color:var(--clr-gray);
 }

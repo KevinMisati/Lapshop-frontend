@@ -14,7 +14,7 @@ const SingleCategory = ({category}) => {
     const short_name = shorten_name(category.name)
 
     const handleRedirect = () => {
-        router.push("/store",{state:{categoryId: category.id}})
+        router.push(`/store?categoryId=${category.id}`,{state:{categoryId: category.id}})
     }
     
     return (
