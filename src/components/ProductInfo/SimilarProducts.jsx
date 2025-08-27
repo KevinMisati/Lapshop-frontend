@@ -21,7 +21,8 @@ const SimilarProducts = ({product}) => {
             url,
             method:"GET",
         }).then(res => {
-            setFilteredProducts(res.data)
+            let products = res.data
+            setFilteredProducts(products.filter(prod => prod.id !== product.id))
             setIsLoading(false)
         })
         .catch(error => {
