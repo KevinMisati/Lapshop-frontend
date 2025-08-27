@@ -24,11 +24,6 @@ const SingleCategory = ({category}) => {
                 <div className={classes.product}>
 
                 <div id="jd" className={classes["img-container_outer"]}>
-                    <div  className={classes["eye-icon"]}>
-                        <button onClick={handleRedirect} >
-                            <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
-                        </button>
-                    </div>
                     <div className={classes.overlay}></div>
                 <div className={classes["img-container_inner"]}>
                     <img alt={category.name} src={category.image}></img>
@@ -36,7 +31,7 @@ const SingleCategory = ({category}) => {
                 </div>
                 <div className={classes["product-info"]}>
                     <div className={classes["product-name"]}>
-                        <h5 onClick={handleRedirect}>
+                        <h5>
                             {short_name}
                         </h5>
                     </div>

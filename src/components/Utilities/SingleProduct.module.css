@@ -17,28 +17,6 @@
     position: relative;
     overflow: hidden;
 } 
-.eye-icon{
-    position: absolute;
-    top: -15%;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    padding: .5rem;
-    z-index: 20;
-    transition: .5s all;
-}
-.eye-icon a {
-    color: inherit;
-}
-.eye-icon:hover{
-    background-color: #ff5063;
-}
-.img-container_outer:hover .eye-icon{
-    top: 50%;
-    left: 50%;
-}
 .overlay{
     position: absolute;
     width: 100%;

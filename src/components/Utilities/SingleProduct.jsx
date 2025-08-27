@@ -4,7 +4,6 @@ import classes from "./SingleProduct.module.css"
 import Button from './Button'
 import Link from "next/link"
 import { useWindowWidth } from './useWindowWidth'
-import { FaEye } from 'react-icons/fa';
 import { add_to_cart } from '../../redux/cartSlice'
 
 const SingleProduct = ({product}) => {
@@ -41,15 +40,12 @@ const SingleProduct = ({product}) => {
                         </div> : ""
                     }
                     <div id="jd" className={classes["img-container_outer"]}>
-                        <div  className={classes["eye-icon"]}>
-                            <Link href={"/product/" + product.id}>
-                            <FaEye className="text-xl text-gray-600 hover:text-brand-primary" />
-                            </Link>
-                        </div>
-                        <div className={classes.overlay}></div>
-                    <div className={classes["img-container_inner"]}>
-                        <img alt={product.name} src={product.image}></img>
-                    </div>
+                        <Link href={"/product/" + product.id}>
+                            <div className={classes.overlay}></div>
+                            <div className={classes["img-container_inner"]}>
+                                <img alt={product.name} src={product.image}></img>
+                            </div>
+                        </Link>
                     </div>
                     <div className={classes["product-info"]}>
                         <div className={classes["product-name"]}>
